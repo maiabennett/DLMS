@@ -12,3 +12,4 @@ This is the repository for Maia Bennett's CSCI 8876 Database Search and Pattern 
 ## Tools, installation, and packages
 
 ## License
+This repository uses the MIT License. 

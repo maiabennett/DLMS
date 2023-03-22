@@ -10,6 +10,11 @@ Natural killer (NK) cells, the innate immune counterparts to cytotoxic T cells, 
 - The third aim is to design a user-friendly interface to enable non-bioinformatics Denton Lab members analytical capacity of their data.
 
 ## General overview of the database schema
+Table schema:
+![course-project-tables](https://user-images.githubusercontent.com/123126475/227023244-f7df8343-f6b7-465c-acc8-48bbaec1c2af.png)
+
+Relationships:
+![course-project-relationships](https://user-images.githubusercontent.com/123126475/227023286-201fb9c3-903d-40a8-891f-551c29b9b6c5.png)
 
 ## Tools, installation, and packages
 

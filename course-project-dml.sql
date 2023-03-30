@@ -11,6 +11,8 @@
 -- 
 -- Sources: None
 
+USE maiabennett;
+
 /* This code contains the initial DML for flowDB. It fills a total of 7  tables with a small subset of all intended flowDB data. */
 
 /* fill members table */
@@ -30,43 +32,43 @@ INSERT INTO members VALUES ('Arriana Blackmon', '01-01-2020', NULL);
 
 /* fill metadata table */
 
-INSERT INTO metadata VALUES ('HuF3', NULL, NULL, NULL, '07-26-2022', NULL);
-INSERT INTO metadata VALUES ('HuG3', NULL, NULL, NULL, '07-27-2022', NULL);
-INSERT INTO metadata VALUES ('HuH3', NULL, NULL, NULL, '08-03-2022', NULL);
-INSERT INTO metadata VALUES ('HuI3', NULL, NULL, NULL, '08-09-2022', NULL);
-INSERT INTO metadata VALUES ('HuJ3', NULL, NULL, NULL, '08-24-2022', NULL);
-INSERT INTO metadata VALUES ('HuK3', 40, 'Caucasian', 'F', '08-30-2022', NULL);
-INSERT INTO metadata VALUES ('HuL3', 66, 'Caucasian', 'M', '09-07-2022', NULL);
-INSERT INTO metadata VALUES ('HuM3', 52, 'Caucasian', 'M', '10-04-2022', NULL);
-INSERT INTO metadata VALUES ('HuN3', 46, 'Caucasian', 'F', '10-13-2022', NULL);
-INSERT INTO metadata VALUES ('HuO3', 72, 'Caucasian', 'F', '10-13-2022', NULL);
-INSERT INTO metadata VALUES ('HuP3', 21, 'Caucasian', 'M', '10-18-2022', NULL);
-INSERT INTO metadata VALUES ('HuQ3', 75, 'Caucasian', 'F', '10-25-2022', NULL);
-INSERT INTO metadata VALUES ('HuR3', 62, 'Caucasian', 'F', '11-01-2022', NULL);
+INSERT INTO metadata VALUES ('HuF3', NULL, NULL, NULL, '2022-07-26', NULL);
+INSERT INTO metadata VALUES ('HuG3', NULL, NULL, NULL, '2022-07-27', NULL);
+INSERT INTO metadata VALUES ('HuH3', NULL, NULL, NULL, '2022-08-03', NULL);
+INSERT INTO metadata VALUES ('HuI3', NULL, NULL, NULL, '2022-08-09', NULL);
+INSERT INTO metadata VALUES ('HuJ3', NULL, NULL, NULL, '2022-08-24', NULL);
+INSERT INTO metadata VALUES ('HuK3', 40, 'Caucasian', 'F', '2022-08-30', NULL);
+INSERT INTO metadata VALUES ('HuL3', 66, 'Caucasian', 'M', '2022-09-07', NULL);
+INSERT INTO metadata VALUES ('HuM3', 52, 'Caucasian', 'M', '2022-10-04', NULL);
+INSERT INTO metadata VALUES ('HuN3', 46, 'Caucasian', 'F', '2022-10-13', NULL);
+INSERT INTO metadata VALUES ('HuO3', 72, 'Caucasian', 'F', '2022-10-13', NULL);
+INSERT INTO metadata VALUES ('HuP3', 21, 'Caucasian', 'M', '2022-10-18', NULL);
+INSERT INTO metadata VALUES ('HuQ3', 75, 'Caucasian', 'F', '2022-10-25', NULL);
+INSERT INTO metadata VALUES ('HuR3', 62, 'Caucasian', 'F', '2022-11-01', NULL);
 
 /* fill assay table */
 
-INSERT INTO assay VALUES ('AM033a', 'HuF3', '07-29-2022', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
-INSERT INTO assay VALUES ('AM033b', 'HuG3', '07-30-2022', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
-INSERT INTO assay VALUES ('AM033c', 'HuH3', '08-06-2022', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
-INSERT INTO assay VALUES ('AM033d', 'HuI3', '08-12-2022', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
-INSERT INTO assay VALUES ('AM033e', 'HuJ3', '08-27-2022', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
-INSERT INTO assay VALUES ('AM033f', 'HuK3', '09-02-2022', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
-INSERT INTO assay VALUES ('AM033g', 'HuL3', '09-10-2022', 'Anna Mahr', 'Anna Mahr', NULL, NULL, NULL, NULL);
-INSERT INTO assay VALUES ('AM034a', 'HuM3', '10-07-2022', 'Anna Mahr', 'Anna Mahr', NULL, NULL, NULL, NULL);
-INSERT INTO assay VALUES ('AM034b', 'HuP3', '10-21-2022', 'Anna Mahr', 'Anna Mahr', NULL, NULL, NULL, NULL);
-INSERT INTO assay VALUES ('AM034c', 'HuR3', '11-04-2022', 'Anna Mahr', 'Anna Mahr', NULL, NULL, NULL, NULL);
+INSERT INTO assay VALUES ('AM033a', 'HuF3', '2022-07-29', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
+INSERT INTO assay VALUES ('AM033b', 'HuG3', '2022-07-30', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
+INSERT INTO assay VALUES ('AM033c', 'HuH3', '2022-08-06', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
+INSERT INTO assay VALUES ('AM033d', 'HuI3', '2022-08-12', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
+INSERT INTO assay VALUES ('AM033e', 'HuJ3', '2022-08-27', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
+INSERT INTO assay VALUES ('AM033f', 'HuK3', '2022-09-02', 'Anna Mahr', 'Anna Mahr', NULL, NULL, 'Maia Bennett', NULL);
+INSERT INTO assay VALUES ('AM033g', 'HuL3', '2022-09-10', 'Anna Mahr', 'Anna Mahr', NULL, NULL, NULL, NULL);
+INSERT INTO assay VALUES ('AM034a', 'HuM3', '2022-10-07', 'Anna Mahr', 'Anna Mahr', NULL, NULL, NULL, NULL);
+INSERT INTO assay VALUES ('AM034b', 'HuP3', '2022-10-21', 'Anna Mahr', 'Anna Mahr', NULL, NULL, NULL, NULL);
+INSERT INTO assay VALUES ('AM034c', 'HuR3', '2022-11-04', 'Anna Mahr', 'Anna Mahr', NULL, NULL, NULL, NULL);
 
-/* fill markers table */
+/* fill markers table: concatenation of marker + fluor to form markerID will be performed by HMTL input code. */
 
-INSERT INTO markers VALUES ('Lin', 'FITC', (SELECT concat(marker, ' ', fluor), NULL, NULL);
-INSERT INTO markers VALUES ('NKG2A', 'PE', (SELECT concat(marker, ' ', fluor), NULL, NULL);
-INSERT INTO markers VALUES ('7AAD', 'PC5.5', (SELECT concat(marker, ' ', fluor), NULL, NULL);
-INSERT INTO markers VALUES ('CD57', 'PE-Cy7', (SELECT concat(marker, ' ', fluor), NULL, NULL);
-INSERT INTO markers VALUES ('CD56', 'APC', (SELECT concat(marker, ' ', fluor), NULL, NULL);
-INSERT INTO markers VALUES ('NKG2D', 'APC-A750', (SELECT concat(marker, ' ', fluor), NULL, NULL);
-INSERT INTO markers VALUES ('CD16', 'PB450', (SELECT concat(marker, ' ', fluor), NULL, NULL);
-INSERT INTO markers VALUES ('NKp46', 'KO525', (SELECT concat(marker, ' ', fluor), NULL, NULL);
+INSERT INTO markers VALUES ('Lin', 'FITC', 'Lin FITC', NULL, NULL);
+INSERT INTO markers VALUES ('NKG2A', 'PE', 'NKG2A PE', NULL, NULL);
+INSERT INTO markers VALUES ('7AAD', 'PC5.5', '7AAD PC5.5', NULL, NULL);
+INSERT INTO markers VALUES ('CD57', 'PE-Cy7', 'CD57 PE-Cy7', NULL, NULL);
+INSERT INTO markers VALUES ('CD56', 'APC', 'CD56 APC', NULL, NULL);
+INSERT INTO markers VALUES ('NKG2D', 'APC-A750', 'NKG2D APC-A750', NULL, NULL);
+INSERT INTO markers VALUES ('CD16', 'PB450', 'CD16 PB450', NULL, NULL);
+INSERT INTO markers VALUES ('NKp46', 'KO525', 'NKp46 KO525', NULL, NULL);
 
 /* fill comp table */
 
@@ -74,7 +76,7 @@ INSERT INTO comp VALUES ('immunoNKcomp', 'immunoNKmatrix', NULL)
 
 /* fill flowpanel table */
 
-INSERT INTO flowpanel VALUES ('immunoNK', 'Lin-FITC', 'NKG2A-PE', '7AAD-PC5.5', 'CD57-Pe-Cy7', 'CD56-APC', 'NKG2D-APC-A750', 'CD16-PB450', 'NKp46-KO525', 'Y', NULL);
+INSERT INTO flowpanel VALUES ('immunoNK', 'Lin FITC', 'NKG2A PE', '7AAD PC5.5', 'CD57 PE-Cy7', 'CD56 APC', 'NKG2D APC-A750', 'CD16 PB450', 'NKp46 KO525', 'immunoNKcomp', 'Y', NULL);
 
 /* fill flowfiles table: currently, both paths are manually inputted; eventually, a function can be built to create the new directory based on assay name and panel utilized. */
 

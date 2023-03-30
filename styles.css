@@ -1,0 +1,275 @@
+body
+{
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+}
+
+h2 {
+}
+
+/* Navigation bar settings */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #000000;
+  height: 100%; 
+  position: fixed;
+  overflow: auto; 
+}
+
+li a {
+  display: block;
+  color: #ffffff;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* To use ACTIVE status on nav bar, add class = "active" to link */
+.active {
+  background-color: #08b008b;
+  color: white;
+}
+
+/* Header image settings */
+.header-imm {
+  background-image: url("imm-header.jpg");
+  height: 200px;
+  background-position: center;
+  border: 2px solid blue;
+}
+
+/* LEFT ALIGNED FORMS */
+/* Button to open input forms (add donor, add comp, add member) */
+.open-button-l {
+  background-color: #c71585;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  top: 400px;
+  left: 400px;
+  width: 200px;
+  height: 200px
+  border-radius: 20px
+  font-size: 20px
+}
+
+/* Popup form to add data, hidden by default */
+.form-popup-l {
+  display: none;
+  position: fixed;
+  bottom: 400px;
+  left: 400px;
+  border: 3px solid #c71585;
+  z-index: 9;
+  border-radius: 20px
+}
+
+/* The form container when visible */
+.form-container-l {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 20px
+}
+
+/* Full-width input fields */
+.form-container-l input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container-l input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the add data button */
+.form-container-l .btn {
+  background-color: #8b008b;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container-l .cancel {
+  background-color: #ddd;
+}
+
+/* Add hover effects to buttons */
+.form-container-l .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+/* CENTER ALIGNED FORMS */
+/* Button to open input forms (add donor, add flow file, add comp, add flow file, add member) */
+.open-button-c {
+  background-color: #87ceeb;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  top: 800px;
+  left: 600px;
+  width: 200px;
+  height: 200px
+  border-radius: 20px
+  font-size: 20px
+}
+
+/* Popup form to add data, hidden by default */
+.form-popup-c {
+  display: none;
+  position: fixed;
+  top: 800px;
+  left: 600px;
+  border: 3px solid #87ceeb;
+  z-index: 9;
+  border-radius: 20px
+}
+
+/* The form container when visible */
+.form-container-c {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 20px
+}
+
+/* Full-width input fields */
+.form-container-c input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container-c input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the add data button */
+.form-container-c .btn {
+  background-color: #191970;
+  color: white;
+  padding: 16px 20px;
+:wq  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container-c .cancel {
+  background-color: #ddd;
+}
+
+/* Add hover effects to buttons */
+.form-container-c .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+
+/* RIGHT ALIGNED FORMS */
+/* Button to open input forms (add donor, add flow file, add comp, add flow file, add member) */
+.open-button-r {
+  background-color: #87ceeb;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  top: 400px;
+  left: 800px;
+  width: 200px;
+  height: 200px
+  border-radius: 20px
+  font-size: 20px
+}
+
+/* Popup form to add data, hidden by default */
+.form-popup-r {
+  display: none;
+  position: fixed;
+  top: 400px;
+  left: 800px;
+  border: 3px solid #87ceeb;
+  z-index: 9;
+  border-radius: 20px
+}
+
+/* The form container when visible */
+.form-container-r {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 20px
+}
+
+/* Full-width input fields */
+.form-container-r input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container-r input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the add data button */
+.form-container-r .btn {
+  background-color: #191970;
+  color: white;
+  padding: 16px 20px;
+:wq  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container-r .cancel {
+  background-color: #ddd;
+}
+
+/* Add hover effects to buttons */
+.form-container-r .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+

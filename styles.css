@@ -1,3 +1,4 @@
+/* MAIN BODY settings */
 body
 {
     border: 0px;
@@ -8,13 +9,18 @@ body
     height: 100%;
 }
 
+
+/* H1 settings */
 h1 {
 }
 
+
+/* H2 settings */
 h2 {
 }
 
-/* Navigation bar settings */
+
+/* NAV BAR settings */
 ul {
   list-style-type: none;
   margin: 0;
@@ -45,13 +51,41 @@ li a:hover {
   color: white;
 }
 
-/* Header image settings */
+
+/* HEADER IMAGE settings */
 .header-imm {
   background-image: url("imm-header.jpg");
   height: 200px;
   background-position: center;
   border: 2px solid blue;
 }
+
+
+/* TABLE settings */
+/* (search/print flow panels) */
+.table-flow{
+  position: fixed;
+  top: 800px;
+  left: 400px;
+  border: 3px solid #c71585;
+  z-index: 9;
+}
+
+.result tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+.result .selected {
+  background-color: #c71585;
+  color: white
+}
+
+.table-flow .button{
+  background-color: #dc143c;
+  color: white;
+  border-radius: 4pt;
+}
+
 
 /* LEFT ALIGNED FORMS */
 /* Button to open input forms (add donor, add comp, add member) */
@@ -74,7 +108,7 @@ li a:hover {
 .form-popup-l {
   display: none;
   position: fixed;
-  bottom: 400px;
+  top: 400px;
   left: 400px;
   border: 3px solid #8b008b;
   z-index: 9;
@@ -99,7 +133,7 @@ li a:hover {
 }
 
 /* When the inputs get focus, do something */
-.form-container-l input[type=text]:focus, .form-container input[type=password]:focus {
+.form-container-l input[type=text]:focus, {
   background-color: #ddd;
   outline: none;
 }
@@ -126,8 +160,29 @@ li a:hover {
   opacity: 1;
 }
 
+
 /* CENTER ALIGNED FORMS */
-/* Button to open input forms (add donor, add flow file, add comp, add flow file, add member) */
+/* Drowpdown bar for members (search member) */
+.search-bar {
+  position: fixed;
+  top: 800px;
+  left: 600px;
+  width: 200px;
+  height: 100px;
+  border: 3px solid #c71585;
+}
+
+.search {
+  padding: 10px;
+}
+
+.search .button{
+  background-color: #dc143c;
+  color: white;
+  border-radius: 4pt;
+}
+
+/* Button to open input forms (add flow files) */
 .open-button-c {
   background-color: #c71585;
   color: white;
@@ -172,7 +227,7 @@ li a:hover {
 }
 
 /* When the inputs get focus, do something */
-.form-container-c input[type=text]:focus, .form-container input[type=password]:focus {
+.form-container-c input[type=text]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -201,7 +256,7 @@ li a:hover {
 
 
 /* RIGHT ALIGNED FORMS */
-/* Button to open input forms (add donor, add flow file, add comp, add flow file, add member) */
+/* Button to open input forms (add assay, add flow panel, edit member) */
 .open-button-r {
   background-color: #87ceeb;
   color: white;
@@ -246,7 +301,7 @@ li a:hover {
 }
 
 /* When the inputs get focus, do something */
-.form-container-r input[type=text]:focus, .form-container input[type=password]:focus {
+.form-container-r input[type=text]:focus {
   background-color: #ddd;
   outline: none;
 }

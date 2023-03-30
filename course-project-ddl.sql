@@ -11,14 +11,16 @@
 -- 
 -- Sources: None
 
+USE maiabennett;
+
 /* This code contains the initial DDL for flowDB. It initializes a total of 7  tables. */
 
 /* make members table */
 
 CREATE TABLE members (
 	name VARCHAR(50) NOT NULL,
-	joined DATE,
-	left DATE,
+	joined VARCHAR(10),
+	grad VARCHAR(10),
 	PRIMARY KEY (name));
 
 /* make metadata table */
@@ -32,17 +34,18 @@ CREATE TABLE metadata (
 	comments VARCHAR(300),
 	PRIMARY KEY (donorID));
 
-/* make assay table */
+/* make assay table: as multiple references to the same column (i.e., multiple foreign keys to member(name)) are not allowed, this effect
+ will be accomplished using dropdown bars of already entered members. */
 
 CREATE TABLE assay (
 	assayID VARCHAR(6) NOT NULL,
 	donorID VARCHAR(5) NOT NULL,
 	run DATE,
-	lead VARCHAR(50) FOREIGN KEY REFERENCES members(name),
-	magnet VARCHAR(50) FOREIGN KEY REFERENCES members(name),
-	targets VARCHAR(50) FOREIGN KEY REFERENCES members(name),
-	staining VARCHAR(50) FOREIGN KEY REFERENCES members(name),
-	flow VARCHAR(50) FOREIGN KEY REFERENCES members(name),
+	lead VARCHAR(50),
+	magnet VARCHAR(50),
+	targets VARCHAR(50),
+	staining VARCHAR(50),
+	flow VARCHAR(50),
 	comments VARCHAR(300) NOT NULL,
 	PRIMARY KEY (assayID));
 
@@ -64,34 +67,33 @@ CREATE TABLE comp (
 	path VARCHAR(300),
 	PRIMARY KEY(compID));
 
-/* make flowpanel table */
+/* make flowpanel table: as multiple references to the same column (i.e., multiple foreign keys to marker(markerID)) are not allowed, this effect will be accomplished using dropdown bars of already entered markerIDs. */
 
 CREATE TABLE flowpanel (
 	FLID VARCHAR(10) NOT NULL,
-	FL1 VARCHAR(27) FOREIGN KEY REFERENCES markers(markerID), 
-	FL2 VARCHAR(27) FOREIGN KEY REFERENCES markers(markerID),
-	FL3 VARCHAR(27) FOREIGN KEY REFERENCES markers(markerID),
-	FL4 VARCHAR(27) FOREIGN KEY REFERENCES markers(markerID),
-	FL5 VARCHAR(27) FOREIGN KEY REFERENCES markers(markerID),
-	FL6 VARCHAR(27) FOREIGN KEY REFERENCES markers(markerID),
-	FL7 VARCHAR(27) FOREIGN KEY REFERENCES markers(markerID),
-	FL8 VARCHAR(27) FOREIGN KEY REFERENCES markers(markerID),
-	compID VARCHAR(10) FOREIGN KEY REFERENCES comp(compID),
-	current VARCHAR(1),
+	FL1 VARCHAR(27), 
+	FL2 VARCHAR(27),
+	FL3 VARCHAR(27),
+	FL4 VARCHAR(27),
+	FL5 VARCHAR(27),
+	FL6 VARCHAR(27),
+	FL7 VARCHAR(27),
+	FL8 VARCHAR(27),
+	compID VARCHAR(10),
+	iscurrent VARCHAR(1),
 	comments VARCHAR(200),
-	PRIMARY KEY (FLID));
+	PRIMARY KEY (FLID),
+	FOREIGN KEY (compID) REFERENCES comp(compID));
 
 /* make flowfiles table: currently, this should be able to fetch the file via the ODpath (OneDrive path) and copy it to the new path. */
 
 CREATE TABLE flowfiles (
-	assayID VARCHAR(5) FOREIGN KEY REFERENCES assay(assayID),
+	assayID VARCHAR(6) NOT NULL,
 	filename VARCHAR(100) NOT NULL,
 	ODpath VARCHAR(300),
-	newpath VARCHAR(300), 
-	condition VARCHAR(30),
-	FLID VARCHAR(10) FOREIGN KEY REFERENCES flowpanel(FLID),
+	newpath VARCHAR(300),
+	cond VARCHAR(30),
+	FLID VARCHAR(10) NOT NULL,
+	FOREIGN KEY (assayID) REFERENCES assay(assayID),
+	FOREIGN KEY (FLID) REFERENCES flowpanel(FLID),
 	PRIMARY KEY(assayID, filename));
-
-
-
-

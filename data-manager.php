@@ -56,10 +56,6 @@
 	</form>
 </div>
 
-<div id="results-l">
-<!-- Handle results  -->
-</div>
-
 <script>
 function openFormleft() {
 	document.getElementById("addDonor").style.display = "block";
@@ -76,9 +72,9 @@ function SubmitDonorData() {
     var sex = $("select#sex option:checked").val();
     var collected = $("input[type="date"][name="collected"]").val();
     var comments = $("#comments").val();
-    $.post("addDonor.php", { donorID: donorID, age: age, ethnicity: ethnicity, sex: sex, collected: collected, comments: comments }
+    $.post("addDonor.php", { donorID: donorID, age: age, ethnicity: ethnicity, sex: sex, collected: collected, comments: comments },
     function(data) {
-//	 $('#results-l').html(data);
+	 alert(data);
 	 $('#addDonorform')[0].reset();
     });
 }
@@ -175,10 +171,6 @@ function SubmitDonorData() {
 	</form>
 </div>
 
-<div id="results-r">
-<!-- Handle results  -->
-</div>
-
 <script>
 function openFormright() {
 	document.getElementById("addAssay").style.display = "block";
@@ -198,9 +190,9 @@ function SubmitAssayData() {
     var staining = $("select#staining option:checked").val();
     var flow = $("select#flow option:checked").val();
     var comments = $("#comments").val();
-    $.post("addAssay.php", { assayID: assayID, donorID: donorID, run: run, lead: lead, magnet: magnet, targets: targets, staining: staining, flow: flow, comments: comments }
+    $.post("addAssay.php", { assayID: assayID, donorID: donorID, run: run, lead: lead, magnet: magnet, targets: targets, staining: staining, flow: flow, comments: comments },
     function(data) {
-//	 $('#results-r').html(data);
+	 alert(data);
 	 $('#addAssayform')[0].reset();
     });
 }
@@ -293,9 +285,9 @@ function SubmitFileData() {
     var filename = $("#filename").val();
     var cond = $("input[type="list"] [name="cond"] option:checked").val();
     var FLID = $("select#FLID option:checked").val();
-    $.post("addFiles.php", { assayID: assayID, filename: filename, connd: cond, FLID: FLID }
+    $.post("addFiles.php", { assayID: assayID, filename: filename, connd: cond, FLID: FLID },
     function(data) {
-//	 $('#results-c').html(data);
+	 alert(data);
 	 $('#addFilesform')[0].reset();
     });
 }

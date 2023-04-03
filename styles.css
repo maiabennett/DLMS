@@ -7,18 +7,19 @@ body
     background-color: #ffffff;
     width: 100%;
     height: 100%;
+    font-family: "Times New Roman", serif;
+}
+
+p {
+    font-family: "Times New Roman", serif;
 }
 
 
-/* H1 settings */
-h1 {
+/* BUTTON settings */
+button 
+{
+  font-family: "Times New Roman", serif;
 }
-
-
-/* H2 settings */
-h2 {
-}
-
 
 /* NAV BAR settings */
 ul {
@@ -47,7 +48,7 @@ li a:hover {
 
 /* To use ACTIVE status on nav bar, add class = "active" to link */
 .active {
-  background-color: #08b008b;
+  background-color: #8B008B;
   color: white;
 }
 
@@ -55,7 +56,8 @@ li a:hover {
 /* HEADER IMAGE settings */
 .header-imm {
   background-image: url("imm-header.jpg");
-  height: 200px;
+  height: 100px;
+  position: fixed;
   background-position: center;
   border: 2px solid blue;
 }
@@ -77,13 +79,46 @@ li a:hover {
 
 .result .selected {
   background-color: #c71585;
-  color: white
+  color: white;
 }
 
-.table-flow .button{
+.table-flow .button {
   background-color: #dc143c;
   color: white;
   border-radius: 4pt;
+}
+
+
+/* HOMEPAGE settings */
+.homepage {
+  border: 3px solid #4b0082;
+  border-radius: 20px;
+  font-family: "Times New Roman", serif;
+}
+
+.agree {
+  display: none;
+  background-color: white; 
+  position: absolute;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  border: 3px solid #c71585;
+  border-radius: 20px;
+  text-align: center;
+  font-family: "Times New Roman", serif;
+}
+
+/* Set a style for the add data button */
+.agree .btn {
+  background-color: #dc143c;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  margin-bottom:10px;
+  opacity: 0.8;
 }
 
 
@@ -94,25 +129,26 @@ li a:hover {
   color: white;
   padding: 16px 20px;
   border: none;
-  cursor: pointer;
-  position: fixed;
-  top: 400px;
-  left: 400px;
-  width: 200px;
-  height: 200px
-  border-radius: 20px
-  font-size: 20px
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  width: 100px;
+  height: 100px;
+  border: 3px solid #4b0082;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: "Times New Roman", serif;
 }
 
 /* Popup form to add data, hidden by default */
 .form-popup-l {
   display: none;
-  position: fixed;
-  top: 400px;
-  left: 400px;
+  position: absolute;
+  top: 200px;
+  left: 200px;
   border: 3px solid #8b008b;
   z-index: 9;
-  border-radius: 20px
+  border-radius: 20px;
 }
 
 /* The form container when visible */
@@ -120,12 +156,12 @@ li a:hover {
   max-width: 300px;
   padding: 10px;
   background-color: white;
-  border-radius: 20px
+  border-radius: 20px;
 }
 
 /* Full-width input fields */
 .form-container-l input[type=text] {
-  width: 100%;
+  width: 90%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
@@ -133,7 +169,7 @@ li a:hover {
 }
 
 /* When the inputs get focus, do something */
-.form-container-l input[type=text]:focus, {
+.form-container-l input[type=text]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -144,7 +180,6 @@ li a:hover {
   color: white;
   padding: 16px 20px;
   border: none;
-  cursor: pointer;
   width: 100%;
   margin-bottom:10px;
   opacity: 0.8;
@@ -161,52 +196,53 @@ li a:hover {
 }
 
 
-/* CENTER ALIGNED FORMS */
+/* RIGHT ALIGNED FORMS (previously bottom center, thus descrepancy in naming) */
 /* Drowpdown bar for members (search member) */
 .search-bar {
-  position: fixed;
-  top: 800px;
+  position: absolute;
+  top: 200px;
   left: 600px;
   width: 200px;
   height: 100px;
-  border: 3px solid #c71585;
+  border: 3px solid #87ceeb;
 }
 
 .search {
   padding: 10px;
 }
 
-.search .button{
-  background-color: #dc143c;
+.search .button {
+  background-color: #191970;
   color: white;
   border-radius: 4pt;
 }
 
 /* Button to open input forms (add flow files) */
 .open-button-c {
-  background-color: #c71585;
+  background-color: #87ceeb;
   color: white;
   padding: 16px 20px;
   border: none;
-  cursor: pointer;
-  position: fixed;
-  top: 800px;
+  position: absolute;
+  top: 200px;
   left: 600px;
-  width: 200px;
-  height: 200px
-  border-radius: 20px
-  font-size: 20px
+  width: 100px;
+  height: 100px;
+  border: 3px #191970;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: "Times New Roman", serif;
 }
 
 /* Popup form to add data, hidden by default */
 .form-popup-c {
   display: none;
-  position: fixed;
-  top: 800px;
+  position: absolute;
+  top: 200px;
   left: 600px;
-  border: 3px solid #c71585;
+  border: 3px solid #87ceeb;
   z-index: 9;
-  border-radius: 20px
+  border-radius: 20px;
 }
 
 /* The form container when visible */
@@ -214,12 +250,12 @@ li a:hover {
   max-width: 300px;
   padding: 10px;
   background-color: white;
-  border-radius: 20px
+  border-radius: 20px;
 }
 
 /* Full-width input fields */
 .form-container-c input[type=text] {
-  width: 100%;
+  width: 90%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
@@ -234,11 +270,10 @@ li a:hover {
 
 /* Set a style for the add data button */
 .form-container-c .btn {
-  background-color: #dc143c;
+  background-color: #191970;
   color: white;
   padding: 16px 20px;
   border: none;
-  cursor: pointer;
   width: 100%;
   margin-bottom:10px;
   opacity: 0.8;
@@ -255,32 +290,68 @@ li a:hover {
 }
 
 
-/* RIGHT ALIGNED FORMS */
-/* Button to open input forms (add assay, add flow panel, edit member) */
+/* CENTER ALIGNED FORMS (previously top right, thus descrepancy in naming) */
+/* Button to open input forms (add assay, edit member) */
 .open-button-r {
-  background-color: #87ceeb;
+  background-color: #c71585;
   color: white;
   padding: 16px 20px;
   border: none;
-  cursor: pointer;
-  position: fixed;
-  top: 400px;
-  left: 800px;
-  width: 200px;
-  height: 200px
-  border-radius: 20px
-  font-size: 20px
+  position: absolute;
+  top: 200px;
+  left: 400px;
+  width: 100px;
+  height: 100px;
+  border: #dc143c;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: "Times New Roman", serif;
+
+}
+
+/* Button to open top stacked input forms (add marker) */
+.open-button-rtop {
+  background-color: #c71585;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  position: absolute;
+  top: 200px;
+  left: 400px;
+  width: 100px;
+  height: 50px;
+  border: #dc143c;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: "Times New Roman", serif;
+}
+
+/* Button to open bottom stacked input forms (add flow panel) */
+.open-button-rbottom {
+  background-color: #c71585;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  position: absolute;
+  top: 300px;
+  left: 400px;
+  width: 100px;
+  height: 50px;
+  border: #dc143c;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: "Times New Roman", serif;
 }
 
 /* Popup form to add data, hidden by default */
 .form-popup-r {
   display: none;
-  position: fixed;
-  top: 400px;
-  left: 800px;
-  border: 3px solid #87ceeb;
+  position: absolute;
+  top: 200px;
+  left: 400px;
+  border: 3px solid #c71585;
   z-index: 9;
-  border-radius: 20px
+  border-radius: 20px;
 }
 
 /* The form container when visible */
@@ -288,7 +359,7 @@ li a:hover {
   max-width: 300px;
   padding: 10px;
   background-color: white;
-  border-radius: 20px
+  border-radius: 20px;
 }
 
 /* Full-width input fields */
@@ -308,7 +379,7 @@ li a:hover {
 
 /* Set a style for the add data button */
 .form-container-r .btn {
-  background-color: #191970;
+  background-color: #dc143c;
   color: white;
   padding: 16px 20px;
   border: none;

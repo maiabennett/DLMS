@@ -1,33 +1,32 @@
-<?php 
-	include "populateData.php"; 
-?>
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="styles.css">
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="js/submit.js"></script>
+
+<link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
 
+<?php include 'populateData.php'; ?>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/submit.js"></script>
+
+<!-- Navigation -->	
 <ul>
-	<li><a href=""></a>Homepage</a></li>
-	<li><a href="data-manager.php"></a>Flow data manager</a></li>
-	<li><a href=""></a>Flow data analysis</a></li>
-	<li class = "active"><a href=""></a>Flow panel viewer</a></li>
-	<li><a href=""></a>Lab member viewer</a></li>
+        <li><a href="home.php">Homepage</a></li>
+        <li><a href="data-manager.php">Flow data manager</a></li>
+        <li><a href="flow-analysis.php">Flow data analysis</a></li>
+        <li class = "active"><a href="flow-viewer.php">Flow panel viewer</a></li>
+        <li><a href="member-viewer.php">Lab member viewer</a></li>
 </ul>
 
 <div class="header-imm">
 </div>
 
 <!-- Left, add compensation file -->
-<button class = "open-button-l" onclick = "openFormleft()">Add new human donor</button>
+<button class = "open-button-l" onclick = "openFormleft()">Add new compensation matrix</button>
 
-// Popup bar options
-// Similar to flow files, the matrix name is currently manual input
-// further validation is needed for file upload
-// and path parsing
+<!-- Popup bar options: Similar to flow files, the matrix name is currently manual input further validation is needed for file upload and path parsing -->
 <div class = "form-popup-l" id = "addComp">
 	<form class = "form-container-l" method = "post" id = "addCompform">
 		<h1> New compensation matrix </h1>
@@ -47,7 +46,6 @@
 		-->
 		
 		<input type="button" class="btn" id="submitComp" onclick="SubmitCompData()" value="Add compensation matrix" />
-//		<button type="submit" class="btn">Add compensation matrix</button>
 		<button type="button" class="btn cancel" onclick="closeFormleft()">Close</button>
 	</form>
 </div>
@@ -72,11 +70,11 @@ function SubmitCompData() {
 }
 </script>
 
-<!-- Right, add flow panel and markers -->
+<!-- Center, add flow panel and markers -->
 <button class = "open-button-rtop" onclick = "openFormMarker()">Add new conjugated fluorophore</button>
 <button class = "open-button-rbottom" onclick = "openFormPanel()">Add new flow panel</button>
 
-// Popup panel bar options
+<!-- Popup panel bar options -->
 <div class = "form-popup-r" id = "addMarker">
         <form class = "form-container-r" method = "post" id = "addMarkerform">
 		<h1> New conjugated fluorophore </h1>
@@ -91,14 +89,13 @@ function SubmitCompData() {
 		<input type="text" placeholder="Ex., BioLegend cat# or eBioscience clone 1111" name="catID" id="catID" required>
 
 		<input type="button" class="btn" id="submitMarker" onclick="SubmitMarkerData()" value="Add conjugated fluorophore" />
-//		<button type="submit" class="btn">Add marker</button>
 		<button type="button" class="btn cancel" onclick="closeFormMarker()">Close</button>
 
 	</form>
 </div>
 
 
-// Popup panel bar options
+<!-- // Popup panel bar options -->
 <div class = "form-popup-r" id = "addPanel">
         <form class = "form-container-r" method = "post" id = "addPanelform">
 		<h1> New flow cytometry panel </h1>
@@ -199,8 +196,8 @@ function SubmitCompData() {
 	      		$obj = new populateData();
 	      		$row = $obj->getData("select compID from comp");
 		?>
-		<label for="compID"><b>Compensation matrix ID</b></label>
-		<select name="compID" id="compID" form="addPanelform">
+		<label for="compID-r"><b>Compensation matrix ID</b></label>
+		<select name="compID" id="compID-r" form="addPanelform">
 			<?php foreach($row as $row){ ?>
 			<option> <?php echo $row['compID'] ?> </option>
 		<?php  } ?>
@@ -213,11 +210,10 @@ function SubmitCompData() {
 		</select>
 
 		<label for="comments-r"><b>Comments</b></label>
-                <input type="text" placeholder="Assay comments" name="comments" id = "comments-r">
+                <input type="text" placeholder="Panel comments" name="comments" id = "comments-r">
 
-		<input type="button" class="btn" id="submitAssay" onclick="SubmitAssayData()" value="Add assay" />
-//		<button type="submit" class="btn">Add assay</button>
-		<button type="button" class="btn cancel" onclick="closeFormright()">Close</button>
+		<input type="button" class="btn" id="submitPanel" onclick="SubmitPanelData()" value="Add panel" />
+		<button type="button" class="btn cancel" onclick="closeFormPanel()">Close</button>
 
 	</form>
 </div>
@@ -252,15 +248,15 @@ function SubmitMarkerData() {
 
 function SubmitPanelData() {
     var FLID = $("#FLID").val();
-    var FL1 = $("select#FL1 option:checked").val();
-    var FL2 = $("select#FL2 option:checked").val();
-    var FL3 = $("select#FL3 option:checked").val();
-    var FL4 = $("select#FL4 option:checked").val();
-    var FL5 = $("select#FL5 option:checked").val();
-    var FL6 = $("select#FL6 option:checked").val();
-    var FL7 = $("select#FL7 option:checked").val();
-    var FL8 = $("select#FL8 option:checked").val();
-    var compID = $("select#compID option:checked").val();
+    var FL1 = $("#FL1").val();
+    var FL2 = $("#FL2").val();
+    var FL3 = $("#FL3").val();
+    var FL4 = $("#FL4").val();
+    var FL5 = $("#FL5").val();
+    var FL6 = $("#FL6").val();
+    var FL7 = $("#FL7").val();
+    var FL8 = $("#FL8").val();
+    var compID = $("#compID-r").val();
     var iscurrent = $("#iscurrent").val();
     var comments = $("#comments").val();
     $.post("addAssay.php", { FLID: FLID, FL1: FL1, FL2: FL2, FL3: FL3, FL4: FL4, FL5: FL5, FL6: FL6, FL7: FL7, FL8: FL8, compID: compID, iscurrent: iscurrent, comments: comments },
@@ -271,7 +267,29 @@ function SubmitPanelData() {
 }
 </script>
 
-<!-- Center, print flowpanel -->
+<!-- not currently working, possibly due to php malfunctions
+function SubmitPanelData() {
+    var FLID = $("#FLID").val();
+    var FL1 = $("select#FL1 option:checked").val();
+    var FL2 = $("select#FL2 option:checked").val();
+    var FL3 = $("select#FL3 option:checked").val();
+    var FL4 = $("select#FL4 option:checked").val();
+    var FL5 = $("select#FL5 option:checked").val();
+    var FL6 = $("select#FL6 option:checked").val();
+    var FL7 = $("select#FL7 option:checked").val();
+    var FL8 = $("select#FL8 option:checked").val();
+    var compID = $("select#compID-r option:checked").val();
+    var iscurrent = $("#iscurrent").val();
+    var comments = $("#comments").val();
+    $.post("addAssay.php", { FLID: FLID, FL1: FL1, FL2: FL2, FL3: FL3, FL4: FL4, FL5: FL5, FL6: FL6, FL7: FL7, FL8: FL8, compID: compID, iscurrent: iscurrent, comments: comments },
+    function(data) {
+	 alert(data);
+	 $('#addAssayform')[0].reset();
+    });
+}
+-->
+
+<!-- Right, print flowpanel -->
 // Table viewer
 <div style= "overflow-x:auto;" class = "table-flow">
 	<table class = "result" name = "result" id = "result">
@@ -319,14 +337,14 @@ function SubmitPanelData() {
 </div>
 
 <script>
-// Only need to pass the primary key, FLID, to PHP function which builds result
+<!-- Only need to pass the primary key (FLID) to PHP function which builds result -->
 function highlight(e) {
     if (selected[0]) selected[0].className = '';
     e.target.parentNode.className = 'selected';
 }
 
 var table = document.getElementById('result'),
-    selected = table.getElementsByClassName('selected');
+selected = table.getElementsByClassName('selected');
 table.onclick = highlight;
 
 function fnselect(){

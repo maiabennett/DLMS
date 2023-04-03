@@ -1,21 +1,25 @@
-<?php 
-	include "populateData.php"; 
-?>
 <!DOCTYPE html>
 <html>
+
 <head>
-	<link rel="stylesheet" href="styles.css">
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="js/submit.js"></script>
+
+<link rel="stylesheet" href="styles.css">
+
 </head>
+
 <body>
 
+<?php include 'populateData.php'; ?>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/submit.js"></script>
+
+
 <ul>
-	<li><a href=""></a>Homepage</a></li>
-	<li class = "active"><a href="data-manager.php"></a>Flow data manager</a></li>
-	<li><a href=""></a>Flow data analysis</a></li>
-	<li><a href=""></a>Flow panel viewer</a></li>
-	<li><a href=""></a>Lab member viewer</a></li>
+        <li><a href="home.php">Homepage</a></li>
+        <li class = "active"><a href="data-manager.php">Flow data manager</a></li>
+        <li><a href="flow-analysis.php">Flow data analysis</a></li>
+        <li><a href="flow-viewer.php">Flow panel viewer</a></li>
+        <li><a href="member-viewer.php">Lab member viewer</a></li>
 </ul>
 
 <div class="header-imm">
@@ -24,9 +28,9 @@
 <!-- Left, add human donor -->
 <button class = "open-button-l" onclick = "openFormleft()">Add new human donor</button>
 
-// Popup bar options
+<!-- Popup bar options -->
 <div class = "form-popup-l" id = "addDonor">
-	<form class = "form-container-l" method = "post" id = "addDonorform">
+	<form class = "form-container-l" method = "post" id = "addCompform">
 		<h1> New human donor </h1>
 
 		<label for = "donorID"><b>Donor ID</b></label>
@@ -38,11 +42,11 @@
 		<label for="ethnicity"><b>Race/Ethnicity</b></label>
 		<input type = "text" placeholder = "Enter race/ethnicity" name = "ethnicity" id = "ethnicity">
 
-		<label for="sex"><b>Sex</b></label>
+		<label for="sex"><b>Sex<br></b></label>
 		<select name="sex" id="sex" form="addDonorform">
 			<option value="M">Male</option>
 			<option value="F">Female</option>
-		</select>
+		</select><br>
 
 		<label for="collected"><b>Collection date</b></label>
 		<input type = "date" name = "collected" id = "collected">
@@ -51,12 +55,12 @@
 		<input type = "text" placeholder = "Enter any comments" name = "comments" id = "comments">
 		
 		<input type="button" class="btn" id="submitDonor" onclick="SubmitDonorData()" value="Add donor" />
-//		<button type="submit" class="btn">Add donor</button>
 		<button type="button" class="btn cancel" onclick="closeFormleft()">Close</button>
 	</form>
 </div>
 
 <script>
+
 function openFormleft() {
 	document.getElementById("addDonor").style.display = "block";
 }
@@ -65,6 +69,25 @@ function closeFormleft() {
 	document.getElementById("addDonor").style.display = "none";
 }
 
+function SubmitDonorData() {
+    var donorID = $("#donorID").val();
+    var age = $("#age").val();
+    var ethnicity = $("#ethnicity").val();
+    var sex = $("#sex").val();
+    var collected = $("#date").val();
+    var comments = $("#comments").val();
+    $.post("addDonor.php", { donorID: donorID, age: age, ethnicity: ethnicity, sex: sex, collected: collected, comments: comments },
+    function(data) {
+	 alert(data);
+	 $('#addDonorform')[0].reset();
+    });
+}
+
+</script>
+
+
+
+<!-- not currently working; might have to do with general php malfunctions
 function SubmitDonorData() {
     var donorID = $("#donorID").val();
     var age = $("#age").val();
@@ -78,12 +101,13 @@ function SubmitDonorData() {
 	 $('#addDonorform')[0].reset();
     });
 }
-</script>
+-->
 
-<!-- Right, add assay -->
+
+<!-- Center, add assay -->
 <button class = "open-button-r" onclick = "openFormright()">Add new flow file</button>
 
-// Popup bar options
+<!-- Popup bar options -->
 <div class = "form-popup-r" id = "addAssay">
         <form class = "form-container-r" method = "post" id = "addAssayform">
 		<h1> New assay </h1>
@@ -165,13 +189,13 @@ function SubmitDonorData() {
                 <input type="text" placeholder="Assay comments" name="comments" id = "comments-r">
 
 		<input type="button" class="btn" id="submitAssay" onclick="SubmitAssayData()" value="Add assay" />
-//		<button type="submit" class="btn">Add assay</button>
 		<button type="button" class="btn cancel" onclick="closeFormright()">Close</button>
 
 	</form>
 </div>
 
 <script>
+
 function openFormright() {
 	document.getElementById("addAssay").style.display = "block";
 }
@@ -180,6 +204,24 @@ function closeFormright() {
 	document.getElementById("addAssay").style.display = "none";
 }
 
+function SubmitAssayData() {
+    var assayID = $("#assayID").val();
+    var donorID = $("#donorID-r").val();
+    var run = $("#run").val();
+    var lead = $("#lead").val();
+    var magnet = $("#magnet").val();
+    var targets = $("#targets").val();
+    var staining = $("#staining").val();
+    var flow = $("#flow").val();
+    var comments = $("#comments-r").val();
+    $.post("addAssay.php", { assayID: assayID, donorID: donorID, run: run, lead: lead, magnet: magnet, targets: targets, staining: staining, flow: flow, comments: comments },
+    function(data) {
+	 alert(data);
+	 $('#addAssayform')[0].reset();
+    });
+}
+
+<!-- not currently working; might have to do with general php malfunctions
 function SubmitAssayData() {
     var assayID = $("#assayID").val();
     var donorID = $("select#donorID-r option:checked").val();
@@ -195,18 +237,18 @@ function SubmitAssayData() {
 	 alert(data);
 	 $('#addAssayform')[0].reset();
     });
-}
+} -->
 </script>
 
-<!-- Center, add files -->
-<button class = "open-button-c" onclick = "openForm()">Add new flow file</button>
+<!-- Right, add files -->
+<button class = "open-button-c" onclick = "openFormcenter()">Add new flow file</button>
 
-// Popup bar options: currently, file paths are not included and names are manually entered 
+<!-- Popup bar options: currently, file paths are not included and names are manually entered 
 // File upload code is commented out but does have an associated file uploadFile.php 
 // NEEDS UPDATING to work with file browser 
 // to select input file, parse path and filename, 
 // assign new path to assay name folder,
-// and upload file + new path
+// and upload file + new path -->
 <div class = "form-popup-c" id = "addFiles">
         <form class = "form-container-c" method = "post" id = "addFilesform">
 		<h1> New flow cytometry files </h1>
@@ -219,7 +261,7 @@ function SubmitAssayData() {
 
 		<label for="assayID-c"><b>Assay ID</b></label>
 		<select name="assayID" id="assayID-c" form = "addFilesform">
-			<?php foreach($row as $row){ ?>
+		<?php foreach($row as $row){ ?>
 			<option> <?php echo $row['assayID'] ?> </option>
 		<?php  } ?>
 		</select>
@@ -260,15 +302,10 @@ function SubmitAssayData() {
                 <?php  } ?>
                 </select>
 
-		<input type="button" class="btn" id="submitFiles" onclick="SubmitFileData()" value="Add files" />
-//		<button type="submit" class="btn">Add file</button>
-		<button type="button" class="btn cancel" onclick="closeFormleft()">Close</button>
+		<input type="button" class="btn" id="submitFiles" onclick="SubmitFileData()" value="Add file" />
+		<button type="button" class="btn cancel" onclick="closeFormcenter()">Close</button>
 
 	</form>
-</div>
-
-<div id="results-c">
-<!-- Handle results  -->
 </div>
 
 <script>
@@ -281,6 +318,19 @@ function closeFormcenter() {
 }
 
 function SubmitFileData() {
+    var assayID = $("#assayID-c").val();
+    var filename = $("#filename").val();
+    var cond = $("#cond").val();
+    var FLID = $("#FLID").val();
+    $.post("addFiles.php", { assayID: assayID, filename: filename, connd: cond, FLID: FLID },
+    function(data) {
+	 alert(data);
+	 $('#addFilesform')[0].reset();
+    });
+}
+</script>
+<!-- not currently working; might have to do with general php malfunctions
+function SubmitFileData() {
     var assayID = $("select#assayID-c option:checked").val();
     var filename = $("#filename").val();
     var cond = $("input[type="list"] [name="cond"] option:checked").val();
@@ -291,7 +341,7 @@ function SubmitFileData() {
 	 $('#addFilesform')[0].reset();
     });
 }
-</script>
+-->
 
 </body>
 </html>

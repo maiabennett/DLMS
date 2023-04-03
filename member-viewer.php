@@ -1,21 +1,23 @@
-<?php 
-	include "populateData.php"; 
-?>
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="styles.css">
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="js/submit.js"></script>
+
+<link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
 
+<?php include "populateData.php"; ?>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/submit.js"></script>
+
+<!-- Navigation -->
 <ul>
-	<li><a href=""></a>Homepage</a></li>
-	<li class = "active"><a href="data-manager.php"></a>Flow data manager</a></li>
-	<li><a href=""></a>Flow data analysis</a></li>
-	<li><a href=""></a>Flow panel viewer</a></li>
-	<li><a href=""></a>Lab member viewer</a></li>
+        <li><a href="home.php">Homepage</a></li>
+        <li><a href="data-manager.php">Flow data manager</a></li>
+        <li><a href="flow-analysis.php">Flow data analysis</a></li>
+        <li><a href="flow-viewer.php">Flow panel viewer</a></li>
+        <li class = "active"><a href="member-viewer.php">Lab member viewer</a></li>
 </ul>
 
 <div class="header-imm">
@@ -39,7 +41,6 @@
 		<input type = "text" placeholder = "MM-DD-YYYY" name = "grad" id = "grad">
 		
 		<input type="button" class="btn" id="submitMember" onclick="SubmitMemberData()" value="Add lab member" />
-//		<button type="submit" class="btn">Add lab member</button>
 		<button type="button" class="btn cancel" onclick="closeFormleft()">Close</button>
 	</form>
 </div>
@@ -53,7 +54,7 @@ function closeFormleft() {
 	document.getElementById("addMember").style.display = "none";
 }
 
-function SubmitDonorData() {
+function SubmitMemberData() {
     var name = $("#name").val();
     var joined = $("#joined").val();
     var grad = $("#grad").val();
@@ -65,7 +66,7 @@ function SubmitDonorData() {
 }
 </script>
 
-<!-- Right, edit member -->
+<!-- Center, edit member -->
 <button class = "open-button-r" onclick = "openFormright()">Edit existing lab member</button>
 
 // Popup bar options
@@ -78,20 +79,19 @@ function SubmitDonorData() {
 	      		$row = $obj->getData("select name from members");
 		?>
 		<label for="name-r"><b>Lab member name</b></label>
-		<select name="name" id="name-r" form="editMemberform">
+		<select name="name-r" id="name-r" form="editMemberform">
 			<?php foreach($row as $row){ ?>
 			<option> <?php echo $row['name'] ?> </option>
 		<?php  } ?>
 		</select>
 		
 		<label for="joined-r"><b>Lab join date</b></label>
-		<input type = "text" placeholder = "MM-DD-YYYY" name = "joined" id = "joined-r">
+		<input type = "text" placeholder = "MM-DD-YYYY" name = "joined-r" id = "joined-r">
 
 		<label for="grad-r"><b>Lab leave date</b></label>
-		<input type = "text" placeholder = "MM-DD-YYYY" name = "grad" id = "grad-r">
+		<input type = "text" placeholder = "MM-DD-YYYY" name = "grad-r" id = "grad-r">
 
-		<input type="button" class="btn" id="submitAssay" onclick="SubmitEditData()" value="Edit member" />
-//		<button type="submit" class="btn">Edit member</button>
+		<input type="button" class="btn" id="submitEdit" onclick="SubmitEditData()" value="Edit member" />
 		<button type="button" class="btn cancel" onclick="closeFormright()">Close</button>
 
 	</form>
@@ -118,9 +118,10 @@ function SubmitEditData() {
 }
 </script>
 
-<!-- Center, search members -->
+<!-- Right, search members -->
 <div class = "search-bar">
 	<form class = "search" method = "post" id = "printMember">
+		<h1> Search member for information & contributions </h1>
 
 		<?php
 			$obj = new populateData();
@@ -136,13 +137,13 @@ function SubmitEditData() {
 
 		</select>
 
-	<input type="button" class="button" id="tst" value="Print member information" onclick="printMember()" />
+		<input type="button" class="button" id="tst" value="Print member information" onclick="printMember()" />
 
 	</form>
 </div>
 
 <script>
-// Only need to pass the primary key, FLID, to PHP function which builds result
+<!-- Only need to pass the primary key (name) to PHP function which builds result -->
 function printMember() {
     var name = $("#name").val();
     $.post("printMember.php", { name: name });

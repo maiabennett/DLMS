@@ -21,7 +21,7 @@ CREATE TABLE members (
 	name VARCHAR(50) NOT NULL,
 	joined DATE,
 	grad DATE,
-	project VARCHAR(50),
+	project VARCHAR(300),
 	PRIMARY KEY (name));
 
 /* make metadata table */

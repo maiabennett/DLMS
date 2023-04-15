@@ -17,18 +17,18 @@ USE maiabennett;
 
 /* fill members table */
 
-INSERT INTO members VALUES ('Maia Bennett', '01-01-2020', NULL);
-INSERT INTO members VALUES ('Anna Mahr', '05-01-2021', NULL);
-INSERT INTO members VALUES ('Cami Bisson', '08-01-2022', NULL);
-INSERT INTO members VALUES ('Angela Truong', '08-01-2022', NULL);
-INSERT INTO members VALUES ('Isabelle Weber', '01-01-2022', NULL);
-INSERT INTO members VALUES ('Jaden Neinhueser', '01-01-2022', NULL);
-INSERT INTO members VALUES ('DJ Rogers', '03-01-2022', NULL);
-INSERT INTO members VALUES ('Bella Circo', '05-01-2021', NULL);
-INSERT INTO members VALUES ('Josh Franzen', '08-01-2021', NULL);
-INSERT INTO members VALUES ('Nathan Booher', '01-01-2021', NULL);
-INSERT INTO members VALUES ('Hakim Lotoro', '01-01-2023', NULL);
-INSERT INTO members VALUES ('Arriana Blackmon', '01-01-2020', NULL);
+INSERT INTO members VALUES ('Maia Bennett', '2020-01-01', NULL);
+INSERT INTO members VALUES ('Anna Mahr', '2021-05-01', NULL);
+INSERT INTO members VALUES ('Cami Bisson', '2022-08-01', NULL);
+INSERT INTO members VALUES ('Angela Truong', '2022-08-01', NULL);
+INSERT INTO members VALUES ('Isabelle Weber', '2022-01-01', NULL);
+INSERT INTO members VALUES ('Jaden Neinhueser', '2022-01-01', NULL);
+INSERT INTO members VALUES ('DJ Rogers', '2022-03-01', NULL);
+INSERT INTO members VALUES ('Bella Circo', '2021-05-01', NULL);
+INSERT INTO members VALUES ('Josh Franzen', '2021-08-01', NULL);
+INSERT INTO members VALUES ('Nathan Booher', '2021-01-01', NULL);
+INSERT INTO members VALUES ('Hakim Lotoro', '2023-01-01', NULL);
+INSERT INTO members VALUES ('Arriana Blackmon', '2020-01-01', NULL);
 
 /* fill metadata table */
 

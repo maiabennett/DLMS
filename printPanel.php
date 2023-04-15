@@ -41,6 +41,7 @@ $FL6m = $obj->getData("select * from markers where markerID = '". $FL6 ."'");
 $FL7m = $obj->getData("select * from markers where markerID = '". $FL7 ."'");
 $FL8m = $obj->getData("select * from markers where markerID = '". $FL8 ."'");
 
+
 fwrite($writefile, $FL1m);
 fwrite($writefile, $FL2m);
 fwrite($writefile, $FL3m);

@@ -19,8 +19,9 @@ USE maiabennett;
 
 CREATE TABLE members (
 	name VARCHAR(50) NOT NULL,
-	joined VARCHAR(10),
-	grad VARCHAR(10),
+	joined DATE,
+	grad DATE,
+	project VARCHAR(50),
 	PRIMARY KEY (name));
 
 /* make metadata table */

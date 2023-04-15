@@ -52,7 +52,7 @@
 		<label for="comments"><br><br><b>Comments</b></label>
 		<input type = "text" placeholder = "Enter any comments" name = "comments" id = "comments">
 		
-		<input type="submit" class="btn" id="submitDonor" value="Add donor" />
+		<input type="submit" class="btn" name="submitDonor" id="submitDonor" value="Add donor" />
 		<button type="button" class="btn cancel" onclick="closeFormleft()">Close</button>
 	</form>
 </div>
@@ -68,44 +68,6 @@ function closeFormleft() {
 }
 
 </script>
-
-<?php
-
-if ($_SERVER["REQUEST_METHOD"] == "POST['submitDonor']") {
-	$donorID=$_POST['donorID'];
-	$age=$_POST['age'];
-	$ethnicity=$_POST['ethnicity'];
-	$sex=$_POST['sex'];
-	$collected=$_POST['collected'];
-	$comments=$_POST['comments'];
-
-
-	if (empty($donorID)) {
-	echo "<br>No donor ID given<br>";
-	} 
-
-	$server="localhost";
-	$username="maiabennett";
-	$password="";
-	$database="maiabennett";
-
-	$connect = mysqli_connect($server,$username,$password,$database);
-
-	if($connect->connect_error){
-		echo "Connection error:" .$connect->connect_error;
-	}
-
-	$query = "insert into metadata values (\"". $donorID ."\", \"". $age ."\", \"". $ethnicity ."\", \"". $sex ."\", \"". $collected ."\", \"". $comments ."\")";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	mysqli_close($connect);
-}
-
-?>
-
 
 
 <!-- Center, add assay -->
@@ -295,7 +257,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST['submitDonor']") {
 		<label for="comments-c"><br><br><b>Comments</b></label>
 		<input type = "text" placeholder = "Enter any comments" name = "comments-c" id = "comments-c">
 
-		<input type="submit" class="btn" id="submitAssay" value="Add assay" />
+		<input type="submit" class="btn" name="submitAssay" id="submitAssay" value="Add assay" />
 		<button type="button" class="btn cancel" onclick="closeFormcenter()">Close</button>
 
 	</form>
@@ -313,48 +275,6 @@ function closeFormcenter() {
 
 </script>
 
-<?php
-
-if ($_SERVER["REQUEST_METHOD"] == "POST['submitAssay']") {
-	$assayID=$_POST['assayID'];
-	$donorID=$_POST['donorID-c'];
-	$run=$_POST['run'];
-	$lead=$_POST['lead'];
-	$magnet=$_POST['magnet'];
-	$donorID=$_POST['donorID'];	
-	$staining=$_POST['staining'];
-	$flow=$_POST['flow'];
-	$comments=$_POST['comments-c'];
-
-	if (empty($assayID)) {
-	echo "<br>No assay ID given<br>";
-	} 
-
-	if (empty($donorID)) {
-	echo "<br>No donor ID given<br>";
-	} 
-
-	$server="localhost";
-	$username="maiabennett";
-	$password="";
-	$database="maiabennett";
-
-	$connect = mysqli_connect($server,$username,$password,$database);
-
-	if($connect->connect_error){
-		echo "Connection error:" .$connect->connect_error;
-	}
-
-	$query = "insert into metadata values (\"". $assayID ."\", \"". $donorID ."\", \"". $run ."\", \"". $lead ."\", \"". $magnet ."\", \"". $targets ."\", \"". $staining ."\", \"". $flow ."\", \"". $comments ."\")";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	mysqli_close($connect);
-}
-
-?>
 
 
 <!-- Popup button, right -->
@@ -406,6 +326,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST['submitAssay']") {
 		<label for="filename"><br><br><b>File name</b></label>
 		<input type="text" placeholder="Ex., NK unstim.fcs" name="filename" id = "filename" required>
 
+		<label for=")Dpath"><b>Current OneDrive file path</b></label>
+		<input type="text" placeholder="Ex., C:\Users\Me\OneDrive - University of Nebraska at Omaha\==UNO=Denton_Research_Lab\..." name="ODpath" id = "ODpath" required>
+
+
 		<label for="cond"><b>Condition tested</b></label>
 		<input list="cond" id="condi" name="cond" required>
 		<datalist id="cond">
@@ -450,7 +374,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST['submitAssay']") {
 
 		<br><br>
 
-		<input type="submit" class="btn" id="submitFile" value="Add file" />
+		<input type="submit" class="btn" name="submitFile" id="submitFile" value="Add file" />
 		<button type="button" class="btn cancel" onclick="closeFormright()">Close</button>
 
 	</form>
@@ -467,16 +391,88 @@ function closeFormright() {
 
 </script>
 
-
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST['submitFile']") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+	if(isset($_POST['submitDonor'])) {
+
+	$donorID=$_POST['donorID'];
+	$age=$_POST['age'];
+	$ethnicity=$_POST['ethnicity'];
+	$sex=$_POST['sex'];
+	$collected=$_POST['collected'];
+	$comments=$_POST['comments'];
+
+
+	if (empty($donorID)) {
+	echo "<br>No donor ID given<br>";
+	} 
+
+	$server="localhost";
+	$username="maiabennett";
+	$password="";
+	$database="maiabennett";
+
+	$connect = mysqli_connect($server,$username,$password,$database);
+
+	if($connect->connect_error){
+		echo "Connection error:" .$connect->connect_error;
+	}
+
+	$query = "insert into metadata values (\"". $donorID ."\", \"". $age ."\", \"". $ethnicity ."\", \"". $sex ."\", \"". $collected ."\", \"". $comments ."\")";
+
+	$result = mysqli_query($connect,$query)
+		or trigger_error("Query Failed! SQL: $query - Error: "
+		. mysqli_error($connect), E_USER_ERROR);
+
+	mysqli_close($connect);
+
+} else if(isset($_POST['submitAssay'])) {
+
+	$assayID=$_POST['assayID'];
+	$donorID=$_POST['donorID-c'];
+	$run=$_POST['run'];
+	$lead=$_POST['lead'];
+	$magnet=$_POST['magnet'];
+	$donorID=$_POST['donorID'];	
+	$staining=$_POST['staining'];
+	$flow=$_POST['flow'];
+	$comments=$_POST['comments-c'];
+
+	if (empty($assayID)) {
+	echo "<br>No assay ID given<br>";
+	} 
+
+	if (empty($donorID)) {
+	echo "<br>No donor ID given<br>";
+	} 
+
+	$server="localhost";
+	$username="maiabennett";
+	$password="";
+	$database="maiabennett";
+
+	$connect = mysqli_connect($server,$username,$password,$database);
+
+	if($connect->connect_error){
+		echo "Connection error:" .$connect->connect_error;
+	}
+
+	$query = "insert into assay values (\"". $assayID ."\", \"". $donorID ."\", \"". $run ."\", \"". $lead ."\", \"". $magnet ."\", \"". $targets ."\", \"". $staining ."\", \"". $flow ."\", \"". $comments ."\")";
+
+	$result = mysqli_query($connect,$query)
+		or trigger_error("Query Failed! SQL: $query - Error: "
+		. mysqli_error($connect), E_USER_ERROR);
+
+	mysqli_close($connect);
+} elseif(isset($_POST['submitFile'])) {
 	$assayID=$_POST['assayID-r'];
 	$filename=$_POST['filename'];
 	$cond=$_POST['cond'];
 	$FLID=$_POST['FLID'];
 
-	if (empty($assayID-r)) {
+	if (empty($assayID)) {
 	echo "<br>No assay ID given<br>";
 	} 
 
@@ -499,7 +495,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST['submitFile']") {
 		echo "Connection error:" .$connect->connect_error;
 	}
 
-	$query = "insert into metadata values (\"". $assayID ."\", \"". $filename ."\", \"". $cond ."\", \"". $FLID ."\")";
+	$query = "insert into flowfiles (assayID, filename, OODpath, cond, FLID) values (\"". $assayID ."\", \"". $filename ."\", \"". $ODpath ."\", \"". $cond ."\", \"". $FLID ."\")";
 
 	$result = mysqli_query($connect,$query)
 		or trigger_error("Query Failed! SQL: $query - Error: "
@@ -508,7 +504,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST['submitFile']") {
 	mysqli_close($connect);
 }
 
+}
+
+
 ?>
+
 
 </body>
 </html>

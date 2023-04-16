@@ -104,6 +104,7 @@ function closeFormleft() {
 
 		<label for="donorID-c"><b>Donor ID</b><br></label>
 		<select name="donorID-c" id="donorID-c" form="addAssayform">
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -133,6 +134,7 @@ function closeFormleft() {
 
 		<label for="lead"><br><br><b>Assay lead</b><br></label>
 		<select name="lead" id="lead" form="addAssayform">
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -159,6 +161,7 @@ function closeFormleft() {
 
 		<label for="magnet"><br><br><b>Magnetic enrichment</b><br></label>
 		<select name="magnet" id="magnet" form="addAssayform">
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -185,6 +188,7 @@ function closeFormleft() {
 
 		<label for="targets"><br><br><b>Target cell staining</b><br></label>
 		<select name="targets" id="targets" form="addAssayform">
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -211,6 +215,7 @@ function closeFormleft() {
 
 		<label for="staining"><br><br><b>Immunophenotype staining</b><br></label>
 		<select name="staining" id="staining" form="addAssayform">
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -237,6 +242,7 @@ function closeFormleft() {
 
 		<label for="flow"><br><br><b>Flow cytometry</b><br></label>
 		<select name="flow" id="flow" form="addAssayform">
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -306,7 +312,8 @@ function closeFormcenter() {
 		?>
 
 		<label for="assayID-r"><b>Assay ID</b><br></label>
-		<select name="assayID-r" id="assayID-r" form="addFileform">
+		<select name="assayID-r" id="assayID-r" form="addFileform" required>
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -326,13 +333,13 @@ function closeFormcenter() {
 		<label for="filename"><br><br><b>File name</b></label>
 		<input type="text" placeholder="Ex., NK unstim.fcs" name="filename" id = "filename" required>
 
-		<label for=")Dpath"><b>Current OneDrive file path</b></label>
+		<label for="ODpath"><b>Current OneDrive file path</b></label>
 		<input type="text" placeholder="Ex., C:\Users\Me\OneDrive - University of Nebraska at Omaha\==UNO=Denton_Research_Lab\..." name="ODpath" id = "ODpath" required>
 
 
 		<label for="cond"><b>Condition tested</b></label>
-		<input list="cond" id="condi" name="cond" required>
-		<datalist id="cond">
+		<input list="cond" id="cond" name="cond" required>
+		<datalist id="conds">
 			<option value="Untreated"> </option>
 			<option value="Untreated + aCD20"> </option>
 			<option value="TLR9a stimulated"> </option>
@@ -355,6 +362,7 @@ function closeFormcenter() {
 
 		<label for="FLID"><br><br><b>Flow panel ID</b><br></label>
 		<select name="FLID" id="FLID" form="addFileform">
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -440,14 +448,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$flow=$_POST['flow'];
 	$comments=$_POST['comments-c'];
 
-	if (empty($assayID)) {
-	echo "<br>No assay ID given<br>";
-	} 
-
-	if (empty($donorID)) {
-	echo "<br>No donor ID given<br>";
-	} 
-
 	$server="localhost";
 	$username="maiabennett";
 	$password="";
@@ -461,11 +461,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$query = "insert into assay values (\"". $assayID ."\", \"". $donorID ."\", \"". $run ."\", \"". $lead ."\", \"". $magnet ."\", \"". $targets ."\", \"". $staining ."\", \"". $flow ."\", \"". $comments ."\")";
 
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
+	if (mysqli_query($connect,$query)) {
+			echo "Sucess!";
+	} else
+			trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
 
 	mysqli_close($connect);
+
 } elseif(isset($_POST['submitFile'])) {
 	$assayID=$_POST['assayID-r'];
 	$filename=$_POST['filename'];
@@ -480,10 +483,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	echo "<br>No donor ID given<br>";
 	} 
 
-	if (empty($cond)) {
-	echo "<br>No condition given<br>";
-	} 
-
 	$server="localhost";
 	$username="maiabennett";
 	$password="";
@@ -495,11 +494,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		echo "Connection error:" .$connect->connect_error;
 	}
 
-	$query = "insert into flowfiles (assayID, filename, OODpath, cond, FLID) values (\"". $assayID ."\", \"". $filename ."\", \"". $ODpath ."\", \"". $cond ."\", \"". $FLID ."\")";
+	$query = "insert into flowfiles (assayID, filename, ODpath, cond, FLID) values (\"". $assayID ."\", \"". $filename ."\", \"". $ODpath ."\", \"". $cond ."\", \"". $FLID ."\")";
 
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
+	if (mysqli_query($connect,$query)) {
+			echo "Sucess!";
+	} else
+			trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
 
 	mysqli_close($connect);
 }

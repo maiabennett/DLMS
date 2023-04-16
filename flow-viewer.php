@@ -29,22 +29,14 @@
 	<form class = "form-container-l" method = "post" id = "addCompform" action="<?php echo $_SERVER['PHP_SELF'];?>">
 		<h1> New compensation matrix </h1>
 
-		<label for = "compID"><b>Compensation matrix ID</b></label>
-		<input type = "text" placeholder = "Unique ID, ex., immunoNKcomp" name = "compID" id = "compID" required>
+		<label for = "comp"><b>Compensation matrix ID</b></label>
+		<input type = "text" placeholder = "Unique ID, ex., immunoNKcomp" name = "comp" id = "comp" required>
 
 		<label for="matrix"><b>Matrix file name</b></label>
 		<input type="text" placeholder="Ex., comp.mtx" name="matrix" id = "matrix" required>
 
-		<!--
-		<form action="uploadFile.php" method="post" enctype="multipart/form-data">
-		File upload location:
-		<input type="file" name="fileToUpload" id="fileToUpload">
-		<input type="submit" value="Upload File" name="submit">
-		</form>
-		-->
-
 		<label for="path"><b>Matrix file path</b></label>
-		<input type="text" placeholder="Ex., C:\Users\Me\OneDrive - University of Nebraska at Omaha\==UNO=Denton_Research_Lab\..." name="path" id = "path" required>
+		<input type="text" placeholder="Ex., C:\Users\Me\OneDrive..." name="path" id = "path">
 
 		
 		<input type="submit" class="btn" name="submitComp" id="submitComp" value="Add compensation matrix" />
@@ -98,6 +90,9 @@ function closeFormleft() {
 		<h1> New flow cytometry panel </h1>
 		<h3> Not seeing your conjugated fluorophores? Click on the other button! </h3>
 
+		<label for="FLID"><b>Flow panel ID</b></label>
+		<input type="text" placeholder="Ex., immunoNK" name="FLID" id="FLID" required>
+
 		<?php
 				$server="localhost";
 				$username="maiabennett";
@@ -119,7 +114,8 @@ function closeFormleft() {
 		?>
 
 		<label for="FL1"><b>FL1</b><br></label>
-		<select name="FL1" id="FL1" form="addPanelform">
+		<select name="FL1" id="FL1" form="addPanelform" required>
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -145,7 +141,8 @@ function closeFormleft() {
 		?>
 
 		<label for="FL2"><br><br><b>FL2</b><br></label>
-		<select name="FL2" id="FL2" form="addPanelform">
+		<select name="FL2" id="FL2" form="addPanelform" required>
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -171,7 +168,8 @@ function closeFormleft() {
 		?>
 
 		<label for="FL3"><br><br><b>FL3</b><br></label>
-		<select name="FL3" id="FL3" form="addPanelform">
+		<select name="FL3" id="FL3" form="addPanelform" required>
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -197,7 +195,8 @@ function closeFormleft() {
 		?>
 
 		<label for="FL4"><br><br><b>FL4</b><br></label>
-		<select name="FL4" id="FL4" form="addPanelform">
+		<select name="FL4" id="FL4" form="addPanelform" required>
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -223,7 +222,8 @@ function closeFormleft() {
 		?>
 
 		<label for="FL5"><br><br><b>FL5</b><br></label>
-		<select name="FL5" id="FL5" form="addPanelform">
+		<select name="FL5" id="FL5" form="addPanelform" required>
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -249,7 +249,8 @@ function closeFormleft() {
 		?>
 
 		<label for="FL6"><br><br><b>FL6</b><br></label>
-		<select name="FL6" id="FL6" form="addPanelform">
+		<select name="FL6" id="FL6" form="addPanelform" required>
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -275,7 +276,8 @@ function closeFormleft() {
 		?>
 
 		<label for="FL7"><br><br><b>FL7</b><br></label>
-		<select name="FL7" id="FL7" form="addPanelform">
+		<select name="FL7" id="FL7" form="addPanelform" required>
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -301,7 +303,8 @@ function closeFormleft() {
 		?>
 
 		<label for="FL8"><br><br><b>FL8</b><br></label>
-		<select name="FL8" id="FL8" form="addPanelform">
+		<select name="FL8" id="FL8" form="addPanelform" required>
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -327,7 +330,8 @@ function closeFormleft() {
 		?>
 
 		<label for="comp-c"><br><br><b>Compensation matrix ID</b><br></label>
-		<select name="comp-c" id="comp-c" form="addPanelform">
+		<select name="comp-c" id="comp-c" form="addPanelform" required>
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -345,8 +349,8 @@ function closeFormleft() {
 
 		<label for="iscurrent"><br><br><b>Is this panel currently used?</b><br></label>
 		<select name="iscurrent" id="iscurrent" form="addPanelform">
-			<option value="Y">Yes</option>
-			<option value="N">No</option>
+			<option value="Y">Y</option>
+			<option value="N">N</option>
 		</select>
 
 		<label for="comments-c"><br><br><b>Comments</b></label>
@@ -382,7 +386,7 @@ function closeFormPanel() {
 <button class = "open-button-c" onclick = "openFormright()">Print flow panel information</button>
 
 <div class = "form-popup-c" id = "printPanel">
-        <form class = "form-container-c" method = "post" id = "printPanelform" action="<?php echo $_SERVER['PHP_SELF'];?>">
+        <form class = "form-container-c" method = "post" id = "printPanelform" action="printPanel.php">
 		<h1> Select panel for printing </h1>
 
 		<?php
@@ -406,7 +410,8 @@ function closeFormPanel() {
 		?>
 
 		<label for="FLID-r"><b>Flow panel ID</b><br></label>
-		<select name="FLID-r" id="FLID-r" form="printPanelform">
+		<select name="FLID-r" id="FLID-r" form="printPanelform" required>
+			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {
 	    				while ($row = mysqli_fetch_row($result)) { ?>
@@ -445,15 +450,11 @@ function closeFormright() {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-	if(isset($_POST['submitComp'])) {
+if (isset($_POST['submitComp'])) {
 
-	$compID=$_POST['compID'];
+	$compID=$_POST['comp'];
 	$matrix=$_POST['matrix'];
 	$path=$_POST['path'];
-
-	if (empty($compID)) {
-	echo "<br>No compensation ID given<br>";
-	} 
 
 	$server="localhost";
 	$username="maiabennett";
@@ -468,15 +469,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$query = "insert into comp values (\"". $compID ."\", \"". $matrix ."\", \"". $path ."\")";
 
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
+	if (mysqli_query($connect,$query)) {
+			echo "Sucess!";
+	} else
+			trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
 
 	mysqli_close($connect);
-}
 
-
-	if(isset($_POST['submitMarker'])) {
+} else if(isset($_POST['submitMarker'])) {
 
 	$marker=$_POST['marker'];
 	$fluor=$_POST['fluor'];
@@ -505,15 +506,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$query = "insert into markers values (\"". $marker ."\", \"". $fluor ."\", \"". $markerID ."\", \"". $catID ."\", \"". $gene_product ."\")";
 
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
+	if (mysqli_query($connect,$query)) {
+			echo "Sucess!";
+	} else
+			trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
 
 	mysqli_close($connect);
-}
 
-
-	if(isset($_POST['submitPanel'])) {
+} else if(isset($_POST['submitPanel'])) {
 
 	$FLID=$_POST['FLID'];
 	$FL1=$_POST['FL1'];
@@ -524,16 +525,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$FL6=$_POST['FL6'];
 	$FL7=$_POST['FL7'];
 	$FL8=$_POST['FL8'];
-	$compID=$_POST['compID'];
+	$compID=$_POST['comp-c'];
 	$iscurrent=$_POST['iscurrent'];
 	$comments=$_POST['comments'];
 
 	if (empty($FLID)) {
 	echo "<br>No flow panel ID given<br>";
-	} 
-
-	if (empty($compID)) {
-	echo "<br>No compensation matrix ID given<br>";
 	} 
 
 	$server="localhost";
@@ -549,236 +546,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$query = "insert into flowpanel values (\"". $FLID ."\", \"". $FL1 ."\", \"". $FL2 ."\", \"". $FL3 ."\", \"". $FL4 ."\", \"". $FL5 ."\", \"". $FL6 ."\", \"". $FL7 ."\", \"". $FL8 ."\", \"". $compID ."\", \"". $iscurrent ."\", \"". $comments ."\")";
 
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
+	if (mysqli_query($connect,$query)) {
+			echo "Sucess!";
+	} else
+			trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
 
 	mysqli_close($connect);
 }
 
-	if(isset($_POST['printPanel'])) {
-
-	$FLID=$_POST['FLID-r'];
-	$target = "~/maiabennett/flow-panels/\"". $FLID ."\".txt";
-
-	if (empty($FLID)) {
-	echo "<br>No flow panel ID given<br>";
-	} 
-
-	$server="localhost";
-	$username="maiabennett";
-	$password="";
-	$database="maiabennett";
-
-	$connect = mysqli_connect($server,$username,$password,$database);
-
-	if($connect->connect_error){
-		echo "Connection error:" .$connect->connect_error;
-	}
-
-
-	/* Open document to write */ 
-	$writefile = fopen($target, "w") or die ("Unable to open file!"); 
-
-	$text = "Panel Setup\n";
-	fwrite($writefile, $text); 
-
-	/* Print panel */ 
-	$query = "select * from flowpanel where FLID = \"". $FLID ."\"";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	if ($result = mysqli_query($connect, $query)) {
-	    	while ($row = mysqli_fetch_row($result)) { 
-
-			fwrite($writefile, $row);
-
-    		}
-    		mysqli_free_result($result);
-	}else{
-		echo "No results";
-	}
-	
-
-	$text = "\n\nMarker Information\n";
-	fwrite($writefile, $text); 
-
-	/* Print markers */
-	$query = "select * from flowpanel where FLID = \"". $FLID ."\"";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	if ($result = mysqli_query($connect, $query)) {
-	    	while ($row = mysqli_fetch_row($result)) { 
-
-			$FL1 = $row[1];
-			$FL2 = $row[2];
-			$FL3 = $row[3];
-			$FL4 = $row[4];
-			$FL5 = $row[5];
-			$FL6 = $row[6];
-			$FL7 = $row[7];
-			$FL8 = $row[8];
-
-    		}
-    		mysqli_free_result($result);
-	}else{
-		echo "No results";
-	}
-
-	$query = "select * from markers where markerID = \"". $FL1 ."\"";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	if ($result = mysqli_query($connect, $query)) {
-	    	while ($row = mysqli_fetch_row($result)) { 
-
-			$text = "FL1: \n \"". $row ."\"";
-			fwrite($writefile, $text);
-
-    		}
-    		mysqli_free_result($result);
-	}else{
-		echo "No results";
-	}
-	
-	$query = "select * from markers where markerID = \"". $FL2 ."\"";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	if ($result = mysqli_query($connect, $query)) {
-	    	while ($row = mysqli_fetch_row($result)) { 
-
-			$text = "FL2: \n \"". $row ."\"";
-			fwrite($writefile, $text);
-
-    		}
-    		mysqli_free_result($result);
-	}else{
-		echo "No results";
-	}
-
-	$query = "select * from markers where markerID = \"". $FL3 ."\"";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	if ($result = mysqli_query($connect, $query)) {
-	    	while ($row = mysqli_fetch_row($result)) { 
-
-			$text = "FL3: \n \"". $row ."\"";
-			fwrite($writefile, $text);
-
-    		}
-    		mysqli_free_result($result);
-	}else{
-		echo "No results";
-	}
-	
-	$query = "select * from markers where markerID = \"". $FL4 ."\"";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	if ($result = mysqli_query($connect, $query)) {
-	    	while ($row = mysqli_fetch_row($result)) { 
-
-			$text = "FL4: \n \"". $row ."\"";
-			fwrite($writefile, $text);
-
-    		}
-    		mysqli_free_result($result);
-	}else{
-		echo "No results";
-	}
-
-	$query = "select * from markers where markerID = \"". $FL5 ."\"";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	if ($result = mysqli_query($connect, $query)) {
-	    	while ($row = mysqli_fetch_row($result)) { 
-
-			$text = "FL5: \n \"". $row ."\"";
-			fwrite($writefile, $text);
-
-    		}
-    		mysqli_free_result($result);
-	}else{
-		echo "No results";
-	}
-
-	$query = "select * from markers where markerID = \"". $FL6 ."\"";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	if ($result = mysqli_query($connect, $query)) {
-	    	while ($row = mysqli_fetch_row($result)) { 
-
-			$text = "FL6: \n \"". $row ."\"";
-			fwrite($writefile, $text);
-
-    		}
-    		mysqli_free_result($result);
-	}else{
-		echo "No results";
-	}
-
-	$query = "select * from markers where markerID = \"". $FL7 ."\"";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	if ($result = mysqli_query($connect, $query)) {
-	    	while ($row = mysqli_fetch_row($result)) { 
-
-			$text = "FL7: \n \"". $row ."\"";
-			fwrite($writefile, $text);
-
-    		}
-    		mysqli_free_result($result);
-	}else{
-		echo "No results";
-	}
-
-	$query = "select * from markers where markerID = \"". $FL8 ."\"";
-
-	$result = mysqli_query($connect,$query)
-		or trigger_error("Query Failed! SQL: $query - Error: "
-		. mysqli_error($connect), E_USER_ERROR);
-
-	if ($result = mysqli_query($connect, $query)) {
-	    	while ($row = mysqli_fetch_row($result)) { 
-
-			$text = "FL8: \n \"". $row ."\"";
-			fwrite($writefile, $text);
-
-    		}
-    		mysqli_free_result($result);
-	}else{
-		echo "No results";
-	}
-
-	/* Close file */
-	fclose($writefile);
-	 
-	mysqli_close($connect);
-}
 }
 	 
 ?>

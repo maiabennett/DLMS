@@ -1,61 +1,201 @@
-<?php
-include "populateData.php"; 
+<!DOCTYPE html>
+<html>
+<head>
 
-/* Target output directory */
-$target-dir = "./members"
-$name = $_post['name'];
+<link rel="stylesheet" href="styles.css">
 
-/* Open document to write */
-$writefile = fopen($target-dir . $name.'.txt', "w") or die ("Unable to open file!");
-
-$text = "Member Information\n"
-fwrite($writefile, $text);
-
-/* Format, run, and print member info */
-$obj = new populateData();
-$row = $obj->getData("select * from members where name = '". $name ."'");
-
-fwrite($writefile, $row);
+</head>
+<body>
 
 
-/* Format, run, and print member contributions */
-$text = "Member Contributions\n";
+<!-- Navigation -->
+<ul>
+        <li><a href="home.php">Homepage</a></li>
+        <li><a href="data-manager.php">Flow data manager</a></li>
+        <li><a href="flow-analysis.php">Flow data analysis</a></li>
+        <li><a href="flow-viewer.php">Flow panel viewer</a></li>
+        <li><a href="member-viewer.php">Lab member viewer</a></li>
+</ul>
 
-/* Get lead roles */
-$text = "Assay lead\n";
-$leads = $obj->getData("select assayID, donorID, run, lead, comments from flowpanel where lead = '". $name ."'");
-foreach($leads as $row){ 
-	fwrite($writefile, $row);
-}
+<!-- Header image -->
+<div class="header-imm">
+</div>
 
-/* Get magnet roles */
-$text = "Magnetic enrichment\n";
-$magnets = $obj->getData("select assayID, donorID, run, magnet, comments from flowpanel where magnet = '". $name ."'");
-foreach($magnets as $row){ 
-	fwrite($writefile, $row);
-}
 
-/* Get target roles */
-$text = "Target Staining\n";
-$targets = $obj->getData("select assayID, donorID, run, targets, comments from flowpanel where target = '". $name ."'");
-foreach($targets as $row){ 
-	fwrite($writefile, $row);
-}
+<!-- Content -->
+<div class= "homepage">
 
-/* Get staining roles */
-$text = "Immunophenotype staining\n";
-$stains = $obj->getData("select assayID, donorID, run, staining, comments from flowpanel where staining = '". $name ."'");
-foreach($stains as $row){ 
-	fwrite($writefile, $row);
-}
+	<?php
 
-/* Get flow roles */
-$text = "Flow cytometry\n";
-$flows = $obj->getData("select assayID, donorID, run, flow, comments from flowpanel where flow = '". $name ."'");
-foreach($flows as $row){ 
-	fwrite($writefile, $row);
-}
+	if ($_POST) {
 
-fclose($writefile);
+		$name=$_POST['name-r'];
+		$project=$_POST['project-r'];
 
-?>
+		$server="localhost";
+		$username="maiabennett";
+		$password="";
+		$database="maiabennett";
+
+		$connect = mysqli_connect($server,$username,$password,$database);
+
+		if($connect->connect_error){
+			echo "Connection error:" .$connect->connect_error;
+		}
+
+		if (!empty($project)) {
+
+			echo "<h2> Members on project </h2>";
+
+			$query = "select * from members where project like \"%". $project ."%\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+
+				echo "<p> ". implode(', ' , $row) ." <br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+		}
+
+
+		if (!empty($name)) {
+
+			echo "<h2> Member information </h2>";
+
+			$query = "select * from members where name = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+
+				echo "<p>". implode(', ' , $row) ."<br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+			echo "<h2> Member contributions </h2>";
+			
+			$query = "select assayID, donorID, run, comments from assay where lead = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			echo "<h3> Assay lead </h3>";
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+	
+				echo "<p>". implode(', ' , $row) ."<br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+			$query = "select assayID, donorID, run, comments from assay where magnet = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			echo "<h3> Magnetic enrichment </h3>";
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+	
+				echo "<p>". implode(', ' , $row) ."<br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+			$query = "select assayID, donorID, run, comments from assay where targets = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			echo "<h3> Target cell staining </h3>";	
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+
+				echo "<p>". implode(', ' , $row) ."<br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+			$query = "select assayID, donorID, run, comments from assay where staining = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			echo "<h3> Immunophenotype staining </h3>";	
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+
+				echo "<p>". implode(', ' , $row) ."<br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+			$query = "select assayID, donorID, run, comments from assay where flow = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			echo "<h3> Flow cytometry </h3>";
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+	
+				echo "<p>". implode(', ' , $row) ."<br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+
+		}	
+
+	
+
+	}
+
+	?>
+
+</div>
+
+</body>
+</html>
+

@@ -10,11 +10,11 @@
 
 <!-- Navigation -->
 <ul>
-        <li><a href="home.php">Homepage</a></li>
+        <li class = "active"><a href="home.php">Homepage</a></li>
         <li><a href="data-manager.php">Flow data manager</a></li>
         <li><a href="flow-analysis.php">Flow data analysis</a></li>
         <li><a href="flow-viewer.php">Flow panel viewer</a></li>
-        <li class = "active"><a href="member-viewer.php">Lab member viewer</a></li>
+        <li><a href="member-viewer.php">Lab member viewer</a></li>
 </ul>
 
 

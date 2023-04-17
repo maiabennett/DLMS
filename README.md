@@ -6,7 +6,7 @@ Natural killer (NK) cells, the innate immune counterparts to cytotoxic T cells, 
 
 ## The main aim of this project is to create a user-friendly database to facilitate analysis of primary flow cytometry data by the Denton Immunobiology Lab. 
 - The first aim is to create a database (flowDB) that accurately stores flow cytometry data, donor metadata, and relevant gene ontologies. 
-- The second aim is to develop analytical methodologies to run FlowSOM, tSNE/viSNE, and GO analysis on stored flow cytometry data.
+- The second aim is to develop analytical methodologies to run FlowSOM on stored flow cytometry data.
 - The third aim is to design a user-friendly interface to enable non-bioinformatics Denton Lab members analytical capacity of their data.
 
 ## General overview of the database schema
@@ -18,6 +18,8 @@ Relationships:
 
 ## Installation
 Access to a MySQL server is required for use of this database. To implement flowDB with the test data, navigate to your MySQL database. Obtain the [schema](https://github.com/maiabennett/flowDB/blob/main/course-project-ddl.sql) and [test data](https://github.com/maiabennett/flowDB/blob/main/course-project-dml.sql) files from this GitHub repository. Set up the database schema by running 'mysql [your database name] < course-project-ddl.sql'. Import the test data to your database by running 'mysql [your database name] < course-project-dml.sql'.
+
+To implement the web-based user interface (UI), all non-deprecated .php files included in this repository should be downloaded and placed together on a web server file system. 
 
 ## License
 This repository uses the MIT License. 

@@ -11,10 +11,12 @@ Natural killer (NK) cells, the innate immune counterparts to cytotoxic T cells, 
 
 ## General overview of the database schema
 Table schema:
-![course-project-tables](https://user-images.githubusercontent.com/123126475/227023244-f7df8343-f6b7-465c-acc8-48bbaec1c2af.png)
+
+![course-project-tables](https://user-images.githubusercontent.com/123126475/232627616-5c7d0043-675b-4f55-a8b5-8bf12815cad9.png)
 
 Relationships:
-![course-project-relationships](https://user-images.githubusercontent.com/123126475/227023286-201fb9c3-903d-40a8-891f-551c29b9b6c5.png)
+
+![course-project-relationships](https://user-images.githubusercontent.com/123126475/232627595-aab7fcc5-a8a1-4b1d-91cb-59e615b196e8.png)
 
 ## Installation
 Access to a MySQL server is required for use of this database. To implement flowDB with the test data, navigate to your MySQL database. Obtain the [schema](https://github.com/maiabennett/flowDB/blob/main/course-project-ddl.sql) and [test data](https://github.com/maiabennett/flowDB/blob/main/course-project-dml.sql) files from this GitHub repository. Set up the database schema by running 'mysql [your database name] < course-project-ddl.sql'. Import the test data to your database by running 'mysql [your database name] < course-project-dml.sql'.

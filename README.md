@@ -21,7 +21,7 @@ Relationships:
 ## Installation
 Access to a MySQL server is required for use of this database. To implement flowDB with the test data, navigate to your MySQL database. Obtain the [schema](https://github.com/maiabennett/flowDB/blob/main/course-project-ddl.sql) and [test data](https://github.com/maiabennett/flowDB/blob/main/course-project-dml.sql) files from this GitHub repository. Set up the database schema by running 'mysql [your database name] < course-project-ddl.sql'. Import the test data to your database by running 'mysql [your database name] < course-project-dml.sql'.
 
-To implement the web-based user interface (UI), all non-deprecated .php files included in this repository should be downloaded and placed together on a web server file system. 
+To implement the web-based user interface (UI), all non-deprecated .php and .png files included in this repository should be downloaded and placed together in one subdirectory ('home') on a web server file system. All .R and .fcs files should be downloaded and placed together in a sister directory of 'home' titled 'flow-analysis'. Two empty subdirectories of 'flow-analysis' titled 'preprocessed' and 'aggregated' should be created.
 
 ## License
 This repository uses the MIT License. 

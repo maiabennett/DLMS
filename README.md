@@ -23,5 +23,7 @@ Access to a MySQL server is required for use of this database. To implement flow
 
 To implement the web-based user interface (UI), all non-deprecated .php and .jpg files included in this repository should be downloaded and placed together in one subdirectory ('home') on a web server file system. All .R and .fcs files should be downloaded and placed together in a sister directory of 'home' titled 'flow-analysis'. Two empty subdirectories of 'flow-analysis' titled 'preprocessed' and 'aggregated' should be created.
 
+## Data providence
+
 ## License
 This repository uses the MIT License. 

@@ -53,7 +53,9 @@ have been pre-loaded into this UI environment to facilitate this tutorial. Furth
 the CytoBank FlowSOM UI</a></b> according to <b><a href="https://support.cytobank.org/hc/en-us/articles/360018965212-Introduction-to-FlowSOM-in-Cytobank">
 these resources</a></b>. CytoBank is capable of extending the capabilities exemplified in this demo to a high extent, facilitating more intuitive 
 and interactive analysis of many samples, donors, and conditions. </p>
-	<p> For this demo, the results of your queries will be available in the local file system under the "FlowSOM-results" folder. All R code
+	<p> Although the flow panel used to acquire these data is an 8-color panel the expression of only 6 markers (CD56, CD16, NKG2A, NKG2D, CD57, and NKp46)
+are used to build the FlowSOM results. This assumes that all Lineage-positive (Lin+) and dead (7-AAD+) cells have been excluded in the pre-processing steps.
+ For this demo, the results of your queries will be available in the local file system under the "FlowSOM-results" folder. All R code
  used to generate these results can be found in this <b><a href="https://github.com/maiabennett/flowDB">Github repository</a></b>.</p> 
 
 	<h4> Single-sample FlowSOM analysis </h4>

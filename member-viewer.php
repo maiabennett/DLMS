@@ -337,6 +337,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 
+<div class="bottomsig">
+	<p style="float:right;">Developed by Maia Bennett, 2023</p>
+</div>
+
+
 </body>
 </html>
 

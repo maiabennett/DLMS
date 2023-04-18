@@ -68,14 +68,14 @@ runs the FlowSOM algorithm to construct the FlowSOM tree, and outputs a PDF file
 
 		<label for="single"><b>Select file: </b></label>
 		<select name="single" id="single" form="singleAnalysis" required>
-			<option value="AM033c, Untreated.fcs">AM033c, Untreated.fcs</option>
-			<option value="AM033d, Untreated.fcs">AM033d, Untreated.fcs</option>
-			<option value="AM033c, Treated.fcs">AM033c, Treated.fcs</option>
-			<option value="AM033d, Treated.fcs">AM033d, Treated.fcs</option>
+			<option value="AM033c, Untreated">AM033c, Untreated.fcs</option>
+			<option value="AM033d, Untreated">AM033d, Untreated.fcs</option>
+			<option value="AM033c, Treated">AM033c, Treated.fcs</option>
+			<option value="AM033d, Treated">AM033d, Treated.fcs</option>
 		</select>
 
 		<label for="fileout-s"><br><br><b>Output file name: </b></label>
-		<input type = "text" placeholder = "ex., yourname-filename-assay" name = "fileout-s" id = "fileout-s" required>
+		<input type = "text" placeholder = "yourname-filename-assay" name = "fileout-s" id = "fileout-s" required>
 
 		<br><br>
 
@@ -94,15 +94,15 @@ of the aggregated result. </p>
 
 		<label for="mult"><b>Select files: </b></label>
 		<select name="single" id="mult" form="multAnalysis" multiple required>
-			<option value="AM033c, Untreated.fcs">AM033c, Untreated.fcs</option>
-			<option value="AM033d, Untreated.fcs">AM033d, Untreated.fcs</option>
-			<option value="AM033c, Treated.fcs">AM033c, Treated.fcs</option>
-			<option value="AM033d, Treated.fcs">AM033d, Treated.fcs</option>
+			<option value="AM033c, Untreated">AM033c, Untreated.fcs</option>
+			<option value="AM033d, Untreated">AM033d, Untreated.fcs</option>
+			<option value="AM033c, Treated">AM033c, Treated.fcs</option>
+			<option value="AM033d, Treated">AM033d, Treated.fcs</option>
 		</select>
 
 
 		<label for="fileout-m"><br><br><b>Output file name: </b></label>
-		<input type = "text" placeholder = "ex., yourname-filename-assay" name = "fileout-m" id = "fileout-m" required>
+		<input type = "text" placeholder = "yourname-filename-assay" name = "fileout-m" id = "fileout-m" required>
 
 		<br><br>
 
@@ -125,21 +125,21 @@ recommended you use the same condition. </p>
 
 		<label for="condfiles"><b>Select files: </b></label>
 		<select name="condfiles" id="condfiles" form="condAnalysis" multiple required>
-			<option value="AM033c, Untreated.fcs">AM033c, Untreated.fcs</option>
-			<option value="AM033d, Untreated.fcs">AM033d, Untreated.fcs</option>
-			<option value="AM033c, Treated.fcs">AM033c, Treated.fcs</option>
-			<option value="AM033d, Treated.fcs">AM033d, Treated.fcs</option>
+			<option value="AM033c, Untreated">AM033c, Untreated.fcs</option>
+			<option value="AM033d, Untreated">AM033d, Untreated.fcs</option>
+			<option value="AM033c, Treated">AM033c, Treated.fcs</option>
+			<option value="AM033d, Treated">AM033d, Treated.fcs</option>
 		</select>
 
 		<label for="cond"><br><br><b>Select condition tested: </b></label>
 		<select name="cond" id="cond" form="condAnalysis" required>
-			<option value="AM033c, Untreated.fcs">Treated vs. Untreated</option>
-			<option value="AM033d, Untreated.fcs">AM033d, Untreated.fcs</option>
+			<option value="Treated vs. Untreated">Treated vs. Untreated</option>
+			<option value="Donor vs. Donor">Donor vs. Donor</option>
 		</select>
 
 
 		<label for="fileout-c"><br><br><b>Output file name: </b></label>
-		<input type = "text" placeholder = "ex., yourname-filename-assay" name = "fileout-c" id = "fileout-c" required>
+		<input type = "text" placeholder = "yourname-filename-conds" name = "fileout-c" id = "fileout-c" required>
 
 		<br><br>
 
@@ -157,6 +157,8 @@ if(isset($_POST['submitSingle'])) {
 	$file=$_POST['single'];
 	$fileout=$_POST['fileout-s'];
 
+	$output=shell_exec("Rscript ../flow-analysis/singleAnalysis.R $file $fileout");
+
 
 
 } else if(isset($_POST['submitMult'])) {
@@ -165,6 +167,8 @@ if(isset($_POST['submitSingle'])) {
 	$file1=$files[0];
 	$file2=$files[1];
 	$fileout=$_POST['fileout-m'];
+
+	$output=shell_exec("Rscript ../flow-analysis/multAnalysis.R $file1 $file2 $fileout");
 
 
 
@@ -176,6 +180,7 @@ if(isset($_POST['submitSingle'])) {
 	$cond=$_POST['cond'];
 	$fileout=$_POST['fileout-c'];
 
+	$output=shell_exec("Rscript ../flow-analysis/condAnalysis.R $file1 $file2 $cond $fileout");
 
 
 }

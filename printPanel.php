@@ -44,8 +44,7 @@
 
 		if (!empty($FLID)) {
 
-			echo "<h2> Panel information </h2>
-				<p><b> Format: FLID, FL1, FL2, FL3, FL4, FL5, FL6, FL7, FL8, compensation used, current?, comments </b></p>";
+			echo "<h2> Panel information </h2>";
 
 			$query = "select * from flowpanel where FLID = \"". $FLID ."\"";
 
@@ -56,7 +55,10 @@
 			if ($result = mysqli_query($connect, $query)) {
 	    			while ($row = mysqli_fetch_row($result)) {
 
-				echo "<p>". implode(', ' , $row) ."<br></p>";
+				echo "<p><b> Name: </b>". $row[0] ."<br>
+					<b>Compensation used: </b>". $row[9] ."<br>
+					<b>Currently used?: </b>". $row[10] ."<br>
+					<b>Comments: </b>". $row[11] ."<br></p>";
 
     				}
     				mysqli_free_result($result);
@@ -278,6 +280,11 @@
 	?>
 
 </div>
+
+<div class="bottomsig">
+	<p style="float:right;">Developed by Maia Bennett, 2023</p>
+</div>
+
 
 </body>
 </html>

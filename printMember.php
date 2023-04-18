@@ -56,7 +56,10 @@
 			if ($result = mysqli_query($connect, $query)) {
 	    			while ($row = mysqli_fetch_row($result)) {
 
-				echo "<p> ". implode(', ' , $row) ." <br></p>";
+				echo "<p><b> Name: </b>". $row[0] ."<br>
+					<b>Start date: </b>". $row[1] ."<br>
+					<b>Lab leave date: </b>". $row[2] ."<br>
+					<b>Project(s): </b>". $row[3] ."<br></p>";
 
     				}
     				mysqli_free_result($result);
@@ -80,7 +83,11 @@
 			if ($result = mysqli_query($connect, $query)) {
 	    			while ($row = mysqli_fetch_row($result)) {
 
-				echo "<p>". implode(', ' , $row) ."<br></p>";
+				echo "<p><b> Name: </b>". $row[0] ."<br>
+					<b>Start date: </b>". $row[1] ."<br>
+					<b>Lab leave date: </b>". $row[2] ."<br>
+					<b>Project(s): </b>". $row[3] ."<br></p>";
+
 
     				}
     				mysqli_free_result($result);
@@ -101,7 +108,7 @@
 			if ($result = mysqli_query($connect, $query)) {
 	    			while ($row = mysqli_fetch_row($result)) {
 	
-				echo "<p>". implode(', ' , $row) ."<br></p>";
+				echo "<p> AssayID: ". $row[0] .", DonorID: ". $row[1] .", Run date: ". $row[2] .", Comments: ". $row[3] ."<br></p>";
 
     				}
     				mysqli_free_result($result);
@@ -120,7 +127,7 @@
 			if ($result = mysqli_query($connect, $query)) {
 	    			while ($row = mysqli_fetch_row($result)) {
 	
-				echo "<p>". implode(', ' , $row) ."<br></p>";
+				echo "<p> AssayID: ". $row[0] .", DonorID: ". $row[1] .", Run date: ". $row[2] .", Comments: ". $row[3] ."<br></p>";
 
     				}
     				mysqli_free_result($result);
@@ -139,7 +146,7 @@
 			if ($result = mysqli_query($connect, $query)) {
 	    			while ($row = mysqli_fetch_row($result)) {
 
-				echo "<p>". implode(', ' , $row) ."<br></p>";
+				echo "<p> AssayID: ". $row[0] .", DonorID: ". $row[1] .", Run date: ". $row[2] .", Comments: ". $row[3] ."<br></p>";
 
     				}
     				mysqli_free_result($result);
@@ -158,7 +165,7 @@
 			if ($result = mysqli_query($connect, $query)) {
 	    			while ($row = mysqli_fetch_row($result)) {
 
-				echo "<p>". implode(', ' , $row) ."<br></p>";
+				echo "<p> AssayID: ". $row[0] .", DonorID: ". $row[1] .", Run date: ". $row[2] .", Comments: ". $row[3] ."<br></p>";
 
     				}
     				mysqli_free_result($result);
@@ -177,7 +184,7 @@
 			if ($result = mysqli_query($connect, $query)) {
 	    			while ($row = mysqli_fetch_row($result)) {
 	
-				echo "<p>". implode(', ' , $row) ."<br></p>";
+				echo "<p> AssayID: ". $row[0] .", DonorID: ". $row[1] .", Run date: ". $row[2] .", Comments: ". $row[3] ."<br></p>";
 
     				}
     				mysqli_free_result($result);
@@ -195,6 +202,11 @@
 	?>
 
 </div>
+
+<div class="bottomsig">
+	<p style="float:right;">Developed by Maia Bennett, 2023</p>
+</div>
+
 
 </body>
 </html>

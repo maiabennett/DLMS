@@ -13,7 +13,7 @@ library(factoextra)
 
 # Fixed global variables
 ## Working directory
-wd <- ""
+setwd('home/maiabennett/flow-analysis/')
 ## Directory of preprocessed files
 dir_prepped <- "./preprocessed/"
 ## Directory of aggregated files

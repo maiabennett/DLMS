@@ -1,18 +1,3 @@
--- Name: Maia Bennett
--- EMAIL: maiabennett@unomaha.edu
--- Class: CSCI 8876, Spring 2023
--- Assignment #: Course Project DML
--- 
--- Honor Pledge: On my honor as a student of the University of Nebraska at 
--- Omaha, I have neither given nor received unauthorized help on 
--- this programming assignment.
--- 
--- Partners: None
--- 
--- Sources: None
-
-USE maiabennett;
-
 /* This code contains the initial DML for flowDB. It fills a total of 7  tables with a small subset of all intended flowDB data. */
 
 /* fill members table */

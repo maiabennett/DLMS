@@ -23,8 +23,8 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 
 ### Comp
 - <ins>compID</ins> (primary key): The identifier for a compensation matrix (ex., immunoNKcomp), ideally corresponding in name to its associated flow panel (ex., immunoNK). This field is inputted as a string constrained to 14 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
-- matrix: The file name of the compensation matrix (typically, with a .mtx file format). This field is inputted as a 
-- path: 
+- matrix: The file name of the compensation matrix (typically, with a .mtx file format). This field is inputted as a string constrained to 20 characters and can be easily adjusted at any time. 
+- path: The current file path of the compensation matrix in the Denton Lab OneDrive. This field is inputted as a string constrained to 300 characters and can be easily adjusted at any time. The easiest way to locate and input a file path is to locate the compensation file, right click, and select 'Copy as path', removing the file name itself before submitting. NOTE: All paths must be entered using forward slashes (/.../...) or data input and update attempts will fail due to MySQL syntax requirements.
 
 ### Flowpanel
 - <ins>FLID</ins> (primary key): 

@@ -15,20 +15,20 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 - project: The project(s) with which the indicated member is involved. This field is inputted as a string constrained to 50 characters (including spaces). Multiple comma-separated projects may be entered and can be adjusted at any time; however, updating will overwrite the previous field contents, so ensure all information is entered in full.
 
 ### Markers
-- <ins>markerID</ins> (primary key): The full name of the conjugated fluorophore (ex., CD57 PE-Cy7). To ensure consistency and accuracy of the data, this field is not directly inputted by a DLMS user; instead, the field is constructed by the database using the 'marker' and 'fluor' fields. This cannot be adjusted once entered unless accessed from the back end. 
+- <ins>markerID</ins> (primary key): The full, unique name of the conjugated fluorophore (ex., CD57 PE-Cy7). To ensure consistency and accuracy of the data, this field is not directly inputted by a DLMS user; instead, the field is constructed by the database using the 'marker' and 'fluor' fields. This cannot be adjusted once entered unless accessed from the back end. 
 - marker: The name of the marker to which a fluorophore has been conjugated (ex., CD57). This field is inputted as a string constrained to 6 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
 - fluor: The name of the fluorophore to which a marker has been conjugated (ex., PE-Cy7). This field is inputted as a string constrained to 20 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
 - catID: The catalog information associated with the indicated conjugated fluorophore. This field is inputted as a string constrained to 50 characters and can be easily adjusted at any time. 
 - gene_product: The gene product associated with the indicated marker, included to increase the available information of a conjugated fluorophore for publication reference. This field is inputted as a string constrained to 10 characters and can be easily adjusted at any time. 
 
 ### Comp
-- <ins>compID</ins> (primary key): The identifier for a compensation matrix (ex., immunoNKcomp), ideally corresponding in name to its associated flow panel (ex., immunoNK). This field is inputted as a string constrained to 14 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
+- <ins>compID</ins> (primary key): The unique identifier for a compensation matrix (ex., immunoNKcomp), ideally corresponding in name to its associated flow panel (ex., immunoNK). This field is inputted as a string constrained to 14 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
 - matrix: The file name of the compensation matrix (typically, with a .mtx file format). This field is inputted as a string constrained to 20 characters and can be easily adjusted at any time. 
 - path: The current file path of the compensation matrix in the Denton Lab OneDrive. This field is inputted as a string constrained to 300 characters and can be easily adjusted at any time. The easiest way to locate and input a file path is to locate the compensation file, right click, and select 'Copy as path', removing the file name itself before submitting. NOTE: All paths must be entered using forward slashes (/.../...) or data input and update attempts will fail due to MySQL syntax requirements.
 
 ### Flowpanel
-- <ins>FLID</ins> (primary key): 
-- FL1: 
+- <ins>FLID</ins> (primary key): The unique identifier for a flow panel (ex., immunoNK), ideally corresponding in name to its associated compensation file (ex., immunoNKcomp). This field is inputted as a string constrained to 10 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
+- FL1: The name of the conjugated fluorophore designated as 'FL1' by the flow cytometer. This field is inputted by selecting an existing markerID from a dropdown of all existing markerIDs in the the DLMS. The easiest way to locate the FL1-8 assignments is to access the flow panel's applied compensation in FlowJo, where it will display each fluorophore alongside its FL designation. This field is required.
 - FL2: 
 - FL3-8: 
 - compID: 

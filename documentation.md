@@ -6,32 +6,32 @@ Data entry for the DLMS must follow an order specified by the database schema an
 Editing data in the DLMS also follows specific data constraints. Many data entry fields display the current contents of specific DLMS, such as lab member names and existing assay and flow panel IDs. As such, changing data with existing database contents (ex., changing the lead lab member on an assay from Maia to Anna) is easily processed. Additionally, changing fields which are not used as references in other tables (ex., file locations, lab member join and graduation dates) is easily processed. Changing primary key information within the database (ex., changing an existing member name or a flow panel ID) will require adaptation on the back end (MySQL) to avoid data inconsistencies or relational schema failures. 
 
 ## Data dictionary
-- <ins>primary key</ins>: The key value for any given table, i.e., the value(s) which are used to distinguish unique entries from each other during data search or recall. Each table must have at least one primary key, and each primary key value (or combination of values) must be unique; failure to establish a unique primary key value will result in a failure of data entry or modification. 
+- <ins>primary key</ins>: The key value for any given table, i.e., the value(s) which are used to distinguish unique entries from each other during data search or recall. Each table must have at least one primary key, and each primary key value (or combination of values) must be unique; failure to establish a unique primary key value will result in a failure of data entry or modification. All primary keys are required to submit or update a data entry, and all other required fields are indicated in their definitions. 
 
 ### Members
 - <ins>name</ins> (primary key): The name (first and last) of a Denton Lab member. This field is inputted as a string constrained to 50 characters (including spaces). This cannot be adjusted once entered unless accessed from the back end and is particularly difficult to adjust once the member has been selected as an assay participant, so spell carefully. 
-- joined: The date upon which the indicated member joined the Denton Lab. This field is inputted using a responsive calendar and can be easily adjusted at any time. 
+- joined: The date upon which the indicated member joined the Denton Lab. This field is inputted using a responsive calendar and can be easily adjusted at any time.
 - grad: The date upon which the indicated member graduates from the Denton Lab. This field is inputted using a responsive calendar and can be easily adjusted at any time. 
 - project: The project(s) with which the indicated member is involved. This field is inputted as a string constrained to 50 characters (including spaces). Multiple comma-separated projects may be entered and can be adjusted at any time; however, updating will overwrite the previous field contents, so ensure all information is entered in full.
 
 ### Markers
 - <ins>markerID</ins> (primary key): The full, unique name of the conjugated fluorophore (ex., CD57 PE-Cy7). To ensure consistency and accuracy of the data, this field is not directly inputted by a DLMS user; instead, the field is constructed by the database using the 'marker' and 'fluor' fields. This cannot be adjusted once entered unless accessed from the back end. 
-- marker: The name of the marker to which a fluorophore has been conjugated (ex., CD57). This field is inputted as a string constrained to 6 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
-- fluor: The name of the fluorophore to which a marker has been conjugated (ex., PE-Cy7). This field is inputted as a string constrained to 20 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
+- marker: The name of the marker to which a fluorophore has been conjugated (ex., CD57). This field is inputted as a string constrained to 6 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully. This field is required. 
+- fluor: The name of the fluorophore to which a marker has been conjugated (ex., PE-Cy7). This field is inputted as a string constrained to 20 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully. This field is required. 
 - catID: The catalog information associated with the indicated conjugated fluorophore. This field is inputted as a string constrained to 50 characters and can be easily adjusted at any time. 
 - gene_product: The gene product associated with the indicated marker, included to increase the available information of a conjugated fluorophore for publication reference. This field is inputted as a string constrained to 10 characters and can be easily adjusted at any time. 
 
 ### Comp
 - <ins>compID</ins> (primary key): The unique identifier for a compensation matrix (ex., immunoNKcomp), ideally corresponding in name to its associated flow panel (ex., immunoNK). This field is inputted as a string constrained to 14 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
-- matrix: The file name of the compensation matrix (typically, with a .mtx file format). This field is inputted as a string constrained to 20 characters and can be easily adjusted at any time. 
+- matrix: The file name of the compensation matrix (typically, with a .mtx file format). This field is inputted as a string constrained to 20 characters and can be easily adjusted at any time. This field is required. 
 - path: The current file path of the compensation matrix in the Denton Lab OneDrive. This field is inputted as a string constrained to 300 characters and can be easily adjusted at any time. The easiest way to locate and input a file path is to locate the compensation file, right click, and select 'Copy as path', removing the file name itself before submitting. NOTE: All paths must be entered using forward slashes (/.../...) or data input and update attempts will fail due to MySQL syntax requirements.
 
 ### Flowpanel
 - <ins>FLID</ins> (primary key): The unique identifier for a flow panel (ex., immunoNK), ideally corresponding in name to its associated compensation file (ex., immunoNKcomp). This field is inputted as a string constrained to 10 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
-- FL1: The name of the conjugated fluorophore designated as 'FL1' by the flow cytometer. This field is inputted by selecting an existing markerID from a dropdown of all existing markerIDs in the the DLMS. The easiest way to locate the FL1-8 assignments is to access the flow panel's applied compensation in FlowJo, where it will display each fluorophore alongside its FL designation. This field is required.
-- FL2: 
-- FL3-8: 
-- compID: 
+- FL1: The name of the conjugated fluorophore designated as FL1 by the flow cytometer. This field is inputted by selecting an existing markerID from a dropdown of all existing markerIDs in the the DLMS. The easiest way to locate the FL1-8 assignments is to access the flow panel's applied compensation in FlowJo, where it will display each fluorophore alongside its FL designation. This field is required.
+- FL2: The name of the conjugated fluorophore designated as FL2 by the flow cytometer. This field is inputted by selecting an existing markerID from a dropdown of all existing markerIDs in the the DLMS. This field is required.
+- FL3-8: The name of the conjugated fluorophores designated as FL3-8 by the flow cytometer. This field is inputted by selecting an existing markerID from a dropdown of all existing markerIDs in the the DLMS. These fields are optional depending on the number of fluorophores assessed by the indicated panel.
+- compID: The unique identifier for the associated compensation file. This field is inputted by selecting an existing compID from a dropdown of all existing compIDs in the the DLMS and can be easily adjusted (in terms of panel association, not in terms of the comp table entry) at any time. This field is required. 
 - current: 
 - comments: 
 
@@ -59,6 +59,8 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 - ODpath: 
 - newpath: 
 - FLID: 
+
+## Function dictionary
 
 ## Areas for future improvement & expansion
 ### Improvements

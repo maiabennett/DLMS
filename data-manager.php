@@ -922,7 +922,7 @@ function closeFormrightbottom() {
 		?>
 
 		<label for="filename-rr"><br><br><b>File name</b><br></label>
-		<select name="filename-rr" id="filename-rr" form="printFlowform" required>
+		<select name="filename-rr" id="filename-rr" form="printFlowform">
 			<option></option>
 			<?php 
 				if ($result = mysqli_query($connect, $query)) {

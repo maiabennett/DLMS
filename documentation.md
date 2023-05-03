@@ -43,22 +43,22 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 - comments: Any relevant comments for the indicated human donor. This field is inputted as a string constrained to 300 characters and can be easily adjusted at any time. 
 
 ### Assay
-- <ins>assayID</ins> (primary key): The unique identifier for a human donor (ex., HuA1) which is assigned in ascending alphabetical (A-Z) and numerical (1-26) order. This field is inputted as a string constrained to 5 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
-- donorID: 
-- run: 
-- lead: 
-- magnet: 
-- targets: 
-- staining: 
-- flow: 
-- comments: 
+- <ins>assayID</ins> (primary key): The unique identifier for an assay (ex., AM033a) which is assigned using the lead researcher's initials (AM), the assay number (33) and an optional assay run qualifier (a). This field is inputted as a string constrained to 6 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
+- donorID: The unique identifier for the human donor used in the indicated assay. This field is inputted by selecting an existing donorID from a dropdown of all existing donorIDs in the the DLMS and can be easily adjusted (in terms of assay association, not in terms of the metadata table entry) at any time. This field is required.
+- run: The date upon which the assay was run. This field is inputted using a responsive calendar and can be easily adjusted at any time.
+- lead: The lead researcher for the indicated assay. This field is inputted by selecting an existing mamber names from a dropdown of all existing member names in the the DLMS and can be easily adjusted (in terms of assay association, not in terms of the member table entry) at any time.
+- magnet: The researcher in charge of NK cell magnetic enrichment for the indicated assay. This field is inputted by selecting an existing mamber names from a dropdown of all existing member names in the the DLMS and can be easily adjusted (in terms of assay association, not in terms of the member table entry) at any time.
+- targets: The researcher in charge of target cell staining for the indicated assay. This field is inputted by selecting an existing mamber names from a dropdown of all existing member names in the the DLMS and can be easily adjusted (in terms of assay association, not in terms of the member table entry) at any time.
+- staining: The researcher in charge of flow panel staining for the indicated assay. This field is inputted by selecting an existing mamber names from a dropdown of all existing member names in the the DLMS and can be easily adjusted (in terms of assay association, not in terms of the member table entry) at any time.
+- flow: The researcher in charge of flow cytometric data collection and analysis for the indicated assay. This field is inputted by selecting an existing mamber names from a dropdown of all existing member names in the the DLMS and can be easily adjusted (in terms of assay association, not in terms of the member table entry) at any time.
+- comments: Any relevant comments for the indicated assay. This field is inputted as a string constrained to 300 characters and can be easily adjusted at any time. 
 
 ### Flowfiles
-- <ins>assayID</ins> (primary key): 
-- <ins>filename</ins> (primary key):
-- ODpath: 
-- newpath: 
-- FLID: 
+- <ins>assayID</ins> (primary key): The unique identifier for the assay during which the flow cytometry file's data was collected. This field is inputted by selecting an existing assayID from a dropdown of all existing assayIDs in the the DLMS and cannot be adjusted once entered unless accessed from the back end, so select carefully.
+- <ins>filename</ins> (primary key): The name of a flow cytometry file (ex., NK unstim.fcs) which is assigned using the contents of the data (NK) and the condition tested (unstim), as well as the flow cytometry standard file type extension (.fcs). This file name is likely not unique, which is why the filename and assayID are taken in  combination for the table's primary key. This field is inputted as a string constrained to 100 characters and can be easily adjusted at any time. 
+- ODpath: The current file path of the flow cytometry file in the Denton Lab OneDrive. This field is inputted as a string constrained to 300 characters and can be easily adjusted at any time. The easiest way to locate and input a file path is to locate the flow cytometry file, right click, and select 'Copy as path', removing the file name itself before submitting. NOTE: All paths must be entered using forward slashes (/.../...) or data input and update attempts will fail due to MySQL syntax requirements.
+- newpath: This field is currently **not** used in the DLMS implementation. It is a placeholder for the eventual implementation of a file upload function, in which it will contain the new path for the uploaded flow cytometry file. 
+- FLID: The unique identifier for the flow panel used to collect the flow cytometry file data. This field is inputted by selecting an existing FLID from a dropdown of all existing FLIDs in the the DLMS and can be easily adjusted (in terms of panel association, not in terms of the flowpanel table entry) at any time. This field is required. 
 
 
 ## Areas for future improvement & expansion
@@ -70,6 +70,7 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
     * Addition of a 'newpath' parameter for compensation files
 - Handling member projects as comma-separated lists (or any other method by which projects can be appended); currently, projects must be added one after another as a single string, as editing this field replaces all previously entered data. Searching for projects is not necessarily subject to change, as the function already utilizes pattern matching rather than exact string matching.
 - Handling multiple markers (and catalog numbers) associated with the Lineage (Lin FITC) conjugated fluorophore set. 
+- Handling multiple human donors associated with a single assay.
 
 ### Expansions
 - Addition of 'presentations' field to member entities to track co-authorships on oral and poster presentations for member CVs.

@@ -32,18 +32,18 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 - FL2: The name of the conjugated fluorophore designated as FL2 by the flow cytometer. This field is inputted by selecting an existing markerID from a dropdown of all existing markerIDs in the the DLMS. This field is required.
 - FL3-8: The name of the conjugated fluorophores designated as FL3-8 by the flow cytometer. This field is inputted by selecting an existing markerID from a dropdown of all existing markerIDs in the the DLMS. These fields are optional depending on the number of fluorophores assessed by the indicated panel.
 - compID: The unique identifier for the associated compensation file. This field is inputted by selecting an existing compID from a dropdown of all existing compIDs in the the DLMS and can be easily adjusted (in terms of panel association, not in terms of the comp table entry) at any time. This field is required. 
-- current: 
-- comments: 
+- current: The indicator for whether the panel is currently used or if a more updated panel exists. This field is inputted by selecting 'Y' or 'N' from a dropdown and can be easily adjusted at any time. 
+- comments: Any relevant comments for the indicated panel. This field is inputted as a string constrained to 200 characters and can be easily adjusted at any time. 
 
 ### Metadata
-- <ins>donorID</ins> (primary key): 
-- age: 
-- ethnicity: 
-- collected: 
-- comments: 
+- <ins>donorID</ins> (primary key): The unique identifier for a human donor (ex., HuA1) which is assigned in ascending alphabetical (A-Z) and numerical (1-26) order. This field is inputted as a string constrained to 5 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
+- age: The age of the human donor as detailed by the American Red Cross documentation. This field is inputted as an integer and can be easily adjusted at any time. 
+- ethnicity: The race/ethnicity of the human donor as detailed by the American Red Cross documentation. This field is inputted as a string constrained to 20 characters and can be easily adjusted at any time. 
+- collected: The date upon which the human donor blood product was received and processed. This field is inputted using a responsive calendar and can be easily adjusted at any time.
+- comments: Any relevant comments for the indicated human donor. This field is inputted as a string constrained to 300 characters and can be easily adjusted at any time. 
 
 ### Assay
-- <ins>assayID</ins> (primary key): 
+- <ins>assayID</ins> (primary key): The unique identifier for a human donor (ex., HuA1) which is assigned in ascending alphabetical (A-Z) and numerical (1-26) order. This field is inputted as a string constrained to 5 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
 - donorID: 
 - run: 
 - lead: 
@@ -60,7 +60,6 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 - newpath: 
 - FLID: 
 
-## Function dictionary
 
 ## Areas for future improvement & expansion
 ### Improvements

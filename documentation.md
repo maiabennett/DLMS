@@ -39,6 +39,7 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 - <ins>donorID</ins> (primary key): The unique identifier for a human donor (ex., HuA1) which is assigned in ascending alphabetical (A-Z) and numerical (1-26) order. This field is inputted as a string constrained to 5 characters. This cannot be adjusted once entered unless accessed from the back end, so spell carefully.
 - age: The age of the human donor as detailed by the American Red Cross documentation. This field is inputted as an integer and can be easily adjusted at any time. 
 - ethnicity: The race/ethnicity of the human donor as detailed by the American Red Cross documentation. This field is inputted as a string constrained to 20 characters and can be easily adjusted at any time. 
+- sex: The sex of the human donor as detailed by the American Red Cross documentation. This field is inputted by selecting 'M' or 'F' from a dropdown and can be easily adjusted at any time. 
 - collected: The date upon which the human donor blood product was received and processed. This field is inputted using a responsive calendar and can be easily adjusted at any time.
 - comments: Any relevant comments for the indicated human donor. This field is inputted as a string constrained to 300 characters and can be easily adjusted at any time. 
 
@@ -61,12 +62,12 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 - FLID: The unique identifier for the flow panel used to collect the flow cytometry file data. This field is inputted by selecting an existing FLID from a dropdown of all existing FLIDs in the the DLMS and can be easily adjusted (in terms of panel association, not in terms of the flowpanel table entry) at any time. This field is required. 
 
 ## Function list
-### Member data
+### Member data functions
 - addMember: Adds a new Denton Lab member. 
 - editMember: Edits the information associated with an existing Denton Lab member.
 - printMember: Prints all information associated with the indicated existing Denton Lab member, including their member information (join and graduation date, project associations) and all existing assay contributions. Alternatively, prints all members associated with the indicated Denton Lab project(s).
 
-### Flow panel data
+### Flow panel data functions
 - addComp: Adds a new compensation matrix. 
 - editComp: Edits the information associated with an existing compensation matrix. 
 - addMarker: Adds a new conjugated fluorophore. 
@@ -75,14 +76,14 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 - editPanel: Edits the information associated with an existing flow cytometry panel.
 - printPanel: Prints all information associated with the indicated existing flow cytometry panel, including its panel information (name, associated compensation matrix, whether it is currently used, any associated comments) and information on all of its component conjugated fluorophores (marker, fluorophore, catalog information, gene product) in table format. 
 
-### Assay data
+### Assay data functions
 - addDonor: Adds a new human donor. 
 - editDonor: Edits the information associated with an existing human donor. 
 - addAssay: Adds a new Denton Lab assay.
 - editAssay: Edits the information associated with an existing Denton Lab assay.
 - addFile: Adds a new flow cytometry file.
 - editFile: Edits the information associated with an existing flow cytometry file.
-- printFlow: Prints all information associated with the selected field. Selecting by assayID prints all information for the indicated assay (assayID, donorID, run date, member contributions by their specific roles, comments) and all conditions known to be tested in the indicated assay (retrived using the flow files associated with the assay). Selecting by donorID prints all information for the 
+- printFlow: Prints all information associated with the selected field. Selecting by assay ID prints all information for the indicated assay (assay ID, donor ID, run date, member contributions by their specific roles, comments) and all conditions known to be tested in the indicated assay (retrived using the flow files associated with the assay). Selecting by donor ID prints all information for the indicated donor (donor ID, age, ethnicity, sex, collection date, any associated comments) and all assays associated with the indicated donor. Selecting by file name prints select information (assay ID, donor ID, run date, comments) for each assay associated with files of that name. Selecting by condition tested prints select information (assay ID, donor ID, run date, comments) for each assay testing the indicated condition. Selecting by flow panel ID 
 
 ## Areas for future improvement & expansion
 ### Improvements

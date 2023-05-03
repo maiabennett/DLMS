@@ -61,7 +61,7 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 - newpath: This field is currently **not** used in the DLMS implementation. It is a placeholder for the eventual implementation of a file upload function, in which it will contain the new path for the uploaded flow cytometry file. 
 - FLID: The unique identifier for the flow panel used to collect the flow cytometry file data. This field is inputted by selecting an existing FLID from a dropdown of all existing FLIDs in the the DLMS and can be easily adjusted (in terms of panel association, not in terms of the flowpanel table entry) at any time. This field is required. 
 
-## Function list
+## Function dictionary
 ### Member data functions
 - addMember: Adds a new Denton Lab member. 
 - editMember: Edits the information associated with an existing Denton Lab member.

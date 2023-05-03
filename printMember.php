@@ -29,7 +29,8 @@
 
 	if ($_POST) {
 
-		$FLID=$_POST['FLID-r'];
+		$name=$_POST['name-r'];
+		$project=$_POST['project-r'];
 
 		$server="localhost";
 		$username="maiabennett";
@@ -42,11 +43,11 @@
 			echo "Connection error:" .$connect->connect_error;
 		}
 
-		if (!empty($FLID)) {
+		if (!empty($project)) {
 
-			echo "<h2> Panel information </h2>";
+			echo "<h2> Members on project </h2>";
 
-			$query = "select * from flowpanel where FLID = \"". $FLID ."\"";
+			$query = "select * from members where project like \"%". $project ."%\"";
 
 			$result = mysqli_query($connect,$query)
 			or trigger_error("Query Failed! SQL: $query - Error: "
@@ -56,9 +57,9 @@
 	    			while ($row = mysqli_fetch_row($result)) {
 
 				echo "<p><b> Name: </b>". $row[0] ."<br>
-					<b>Compensation used: </b>". $row[9] ."<br>
-					<b>Currently used?: </b>". $row[10] ."<br>
-					<b>Comments: </b>". $row[11] ."<br></p>";
+					<b>Start date: </b>". $row[1] ."<br>
+					<b>Lab leave date: </b>". $row[2] ."<br>
+					<b>Project(s): </b>". $row[3] ."<br></p>";
 
     				}
     				mysqli_free_result($result);
@@ -66,217 +67,138 @@
 				echo "No results";
 			}
 
-			echo "<h2> Marker information </h2>
+		}
 
-			<table class='table-flow'> 
-      				<tr> 
-          			<td> FL# </td>
-          			<td> Marker </td>  
-          			<td> Fluorophore </td>
-          			<td> Catalog information </td>
-          			<td> Gene product </td>
-      				</tr>";
 
-			$query = "select FL1, FL2, FL3, FL4, FL5, FL6, FL7, FL8 from flowpanel where FLID = \"". $FLID ."\"";
+		if (!empty($name)) {
+
+			echo "<h2> Member information </h2>";
+
+			$query = "select * from members where name = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
 
 			if ($result = mysqli_query($connect, $query)) {
 	    			while ($row = mysqli_fetch_row($result)) {
 
-      					$FL1 = $row[0];
-      					$FL2 = $row[1];
-      					$FL3 = $row[2];
-      					$FL4 = $row[3];
-      					$FL5 = $row[4];
-      					$FL6 = $row[5];
-      					$FL7 = $row[6];
-      					$FL8 = $row[7];
+				echo "<p><b> Name: </b>". $row[0] ."<br>
+					<b>Start date: </b>". $row[1] ."<br>
+					<b>Lab leave date: </b>". $row[2] ."<br>
+					<b>Project(s): </b>". $row[3] ."<br></p>";
 
-					$query2 = "select * from markers where markerID = \"". $FL1 ."\"";
 
-					if ($result2 = mysqli_query($connect, $query2)) {
-	    					while ($row2 = mysqli_fetch_row($result2)) {
-
-							$marker = $row2[0];
-      							$fluor = $row2[1];
-      							$catID = $row2[3];
-      							$gene_product = $row2[4];
-
-        					echo "<tr> 
-							<td> FL1 </td>
-                  					<td>". $marker ."</td> 
-                  					<td>". $fluor ."</td> 
-                  					<td>". $catID ."</td>
-                  					<td>". $gene_product ."</td>
-              					</tr>";
-						}
-
-					mysqli_free_result($result2);
-
-    					}
-
-					$query2 = "select * from markers where markerID = \"". $FL2 ."\"";
-
-					if ($result2 = mysqli_query($connect, $query2)) {
-	    					while ($row2 = mysqli_fetch_row($result2)) {
-
-							$marker = $row2[0];
-      							$fluor = $row2[1];
-      							$catID = $row2[3];
-      							$gene_product = $row2[4];
-
-        					echo "<tr> 
-							<td> FL2 </td>
-                  					<td>". $marker ."</td> 
-                  					<td>". $fluor ."</td> 
-                  					<td>". $catID ."</td>
-                  					<td>". $gene_product ."</td>
-              					</tr>";
-						}
-
-					mysqli_free_result($result2);
-					}
-
-					$query2 = "select * from markers where markerID = \"". $FL3 ."\"";
-
-					if ($result2 = mysqli_query($connect, $query2)) {
-	    					while ($row2 = mysqli_fetch_row($result2)) {
-
-							$marker = $row2[0];
-      							$fluor = $row2[1];
-      							$catID = $row2[3];
-      							$gene_product = $row2[4];
-
-        					echo "<tr> 
-							<td> FL3 </td>
-                  					<td>". $marker ."</td> 
-                  					<td>". $fluor ."</td> 
-                  					<td>". $catID ."</td>
-                  					<td>". $gene_product ."</td>
-              					</tr>";
-						}
-
-					mysqli_free_result($result2);
-					}
-
-					$query2 = "select * from markers where markerID = \"". $FL4 ."\"";
-
-					if ($result2 = mysqli_query($connect, $query2)) {
-	    					while ($row2 = mysqli_fetch_row($result2)) {
-
-							$marker = $row2[0];
-      							$fluor = $row2[1];
-      							$catID = $row2[3];
-      							$gene_product = $row2[4];
-
-        					echo "<tr> 
-							<td> FL4 </td>
-                  					<td>". $marker ."</td> 
-                  					<td>". $fluor ."</td> 
-                  					<td>". $catID ."</td>
-                  					<td>". $gene_product ."</td>
-              					</tr>";
-						}
-
-					mysqli_free_result($result2);
-					}
-
-					$query2 = "select * from markers where markerID = \"". $FL5 ."\"";
-
-					if ($result2 = mysqli_query($connect, $query2)) {
-	    					while ($row2 = mysqli_fetch_row($result2)) {
-
-							$marker = $row2[0];
-      							$fluor = $row2[1];
-      							$catID = $row2[3];
-      							$gene_product = $row2[4];
-
-        					echo "<tr> 
-							<td> FL5 </td>
-                  					<td>". $marker ."</td> 
-                  					<td>". $fluor ."</td> 
-                  					<td>". $catID ."</td>
-                  					<td>". $gene_product ."</td>
-              					</tr>";
-						}
-
-					mysqli_free_result($result2);
-					}
-
-					$query2 = "select * from markers where markerID = \"". $FL6 ."\"";
-
-					if ($result2 = mysqli_query($connect, $query2)) {
-	    					while ($row2 = mysqli_fetch_row($result2)) {
-
-							$marker = $row2[0];
-      							$fluor = $row2[1];
-      							$catID = $row2[3];
-      							$gene_product = $row2[4];
-
-        					echo "<tr> 
-							<td> FL6 </td>
-                  					<td>". $marker ."</td> 
-                  					<td>". $fluor ."</td> 
-                  					<td>". $catID ."</td>
-                  					<td>". $gene_product ."</td>
-              					</tr>";
-						}
-
-					mysqli_free_result($result2);
-					}
-
-					$query2 = "select * from markers where markerID = \"". $FL7 ."\"";
-
-					if ($result2 = mysqli_query($connect, $query2)) {
-	    					while ($row2 = mysqli_fetch_row($result2)) {
-
-							$marker = $row2[0];
-      							$fluor = $row2[1];
-      							$catID = $row2[3];
-      							$gene_product = $row2[4];
-
-        					echo "<tr> 
-							<td> FL7 </td>
-                  					<td>". $marker ."</td> 
-                  					<td>". $fluor ."</td> 
-                  					<td>". $catID ."</td>
-                  					<td>". $gene_product ."</td>
-              					</tr>";
-						}
-
-					mysqli_free_result($result2);
-					}
-
-					$query2 = "select * from markers where markerID = \"". $FL8 ."\"";
-
-					if ($result2 = mysqli_query($connect, $query2)) {
-	    					while ($row2 = mysqli_fetch_row($result2)) {
-
-							$marker = $row2[0];
-      							$fluor = $row2[1];
-      							$catID = $row2[3];
-      							$gene_product = $row2[4];
-
-        					echo "<tr> 
-							<td> FL8 </td>
-                  					<td>". $marker ."</td> 
-                  					<td>". $fluor ."</td> 
-                  					<td>". $catID ."</td>
-                  					<td>". $gene_product ."</td>
-              					</tr>";
-						}
-
-					mysqli_free_result($result2);
-					}
-				}
-
-			mysqli_free_result($result);
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
 			}
-	
-			echo "</table> <br><br><br><br><br><br><br><br><br><br><br><br>";
-		}
-    
-	} 
+
+			echo "<h2> Member contributions </h2>";
 			
+			$query = "select assayID, donorID, run, comments from assay where lead = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			echo "<h3> Assay lead </h3>";
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+	
+				echo "<p> AssayID: ". $row[0] .", DonorID: ". $row[1] .", Run date: ". $row[2] .", Comments: ". $row[3] ."<br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+			$query = "select assayID, donorID, run, comments from assay where magnet = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			echo "<h3> Magnetic enrichment </h3>";
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+	
+				echo "<p> AssayID: ". $row[0] .", DonorID: ". $row[1] .", Run date: ". $row[2] .", Comments: ". $row[3] ."<br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+			$query = "select assayID, donorID, run, comments from assay where targets = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			echo "<h3> Target cell staining </h3>";	
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+
+				echo "<p> AssayID: ". $row[0] .", DonorID: ". $row[1] .", Run date: ". $row[2] .", Comments: ". $row[3] ."<br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+			$query = "select assayID, donorID, run, comments from assay where staining = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			echo "<h3> Immunophenotype staining </h3>";	
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+
+				echo "<p> AssayID: ". $row[0] .", DonorID: ". $row[1] .", Run date: ". $row[2] .", Comments: ". $row[3] ."<br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+			$query = "select assayID, donorID, run, comments from assay where flow = \"". $name ."\"";
+
+			$result = mysqli_query($connect,$query)
+			or trigger_error("Query Failed! SQL: $query - Error: "
+			. mysqli_error($connect), E_USER_ERROR);
+
+			echo "<h3> Flow cytometry </h3>";
+
+			if ($result = mysqli_query($connect, $query)) {
+	    			while ($row = mysqli_fetch_row($result)) {
+	
+				echo "<p> AssayID: ". $row[0] .", DonorID: ". $row[1] .", Run date: ". $row[2] .", Comments: ". $row[3] ."<br></p>";
+
+    				}
+    				mysqli_free_result($result);
+			}else{
+				echo "No results";
+			}
+
+
+		}	
+
+	
+
+	}
+
 	?>
 
 </div>

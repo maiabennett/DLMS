@@ -60,6 +60,29 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 - newpath: This field is currently **not** used in the DLMS implementation. It is a placeholder for the eventual implementation of a file upload function, in which it will contain the new path for the uploaded flow cytometry file. 
 - FLID: The unique identifier for the flow panel used to collect the flow cytometry file data. This field is inputted by selecting an existing FLID from a dropdown of all existing FLIDs in the the DLMS and can be easily adjusted (in terms of panel association, not in terms of the flowpanel table entry) at any time. This field is required. 
 
+## Function list
+### Member data
+- addMember: Adds a new Denton Lab member. 
+- editMember: Edits the information associated with an existing Denton Lab member.
+- printMember: Prints all information associated with the indicated existing Denton Lab member, including their member information (join and graduation date, project associations) and all existing assay contributions. Alternatively, prints all members associated with the indicated Denton Lab project(s).
+
+### Flow panel data
+- addComp: Adds a new compensation matrix. 
+- editComp: Edits the information associated with an existing compensation matrix. 
+- addMarker: Adds a new conjugated fluorophore. 
+- editMarker: Edits the information associated with an existing conjugated fluorophore.
+- addPanel: Adds a new flow cytometry panel.
+- editPanel: Edits the information associated with an existing flow cytometry panel.
+- printPanel: Prints all information associated with the indicated existing flow cytometry panel, including its panel information (name, associated compensation matrix, whether it is currently used, any associated comments) and information on all of its component conjugated fluorophores (marker, fluorophore, catalog information, gene product) in table format. 
+
+### Assay data
+- addDonor: Adds a new human donor. 
+- editDonor: Edits the information associated with an existing human donor. 
+- addAssay: Adds a new Denton Lab assay.
+- editAssay: Edits the information associated with an existing Denton Lab assay.
+- addFile: Adds a new flow cytometry file.
+- editFile: Edits the information associated with an existing flow cytometry file.
+- printFlow: Prints all information associated with the selected field. Selecting by assayID prints all information for the indicated assay (assayID, donorID, run date, member contributions by their specific roles, comments) and all conditions known to be tested in the indicated assay (retrived using the flow files associated with the assay). Selecting by donorID prints all information for the 
 
 ## Areas for future improvement & expansion
 ### Improvements
@@ -71,7 +94,9 @@ Editing data in the DLMS also follows specific data constraints. Many data entry
 - Handling member projects as comma-separated lists (or any other method by which projects can be appended); currently, projects must be added one after another as a single string, as editing this field replaces all previously entered data. Searching for projects is not necessarily subject to change, as the function already utilizes pattern matching rather than exact string matching.
 - Handling multiple markers (and catalog numbers) associated with the Lineage (Lin FITC) conjugated fluorophore set. 
 - Handling multiple human donors associated with a single assay.
+- General improvement of code, including the elimination of code redundancies and increased code annotation.
 
 ### Expansions
 - Addition of 'presentations' field to member entities to track co-authorships on oral and poster presentations for member CVs.
 - Addition of assay analysis data storage to track killing assay and immunophenotyping results. 
+- Addition of 'project' field to assays to facilitate association of specific assays with member projects.

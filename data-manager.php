@@ -57,6 +57,8 @@
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
+
 <script>
 
 function openFormleft() {
@@ -141,6 +143,7 @@ function closeFormleft() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 
 function openFormleftbottom() {
@@ -354,6 +357,7 @@ function closeFormleftbottom() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 
 function openFormcenter() {
@@ -589,6 +593,7 @@ function closeFormcenter() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 
 function openFormcenterbottom() {
@@ -708,6 +713,7 @@ function closeFormcenterbottom() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 function openFormright() {
 	document.getElementById("addFile").style.display = "block";
@@ -825,6 +831,7 @@ function closeFormright() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 function openFormrightbottom() {
 	document.getElementById("editFile").style.display = "block";
@@ -1007,6 +1014,7 @@ function closeFormrightbottom() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 function openFormrightright() {
 	document.getElementById("printFlow").style.display = "block";
@@ -1021,6 +1029,9 @@ function closeFormrightright() {
 <div class="bottomsig">
 	<p style="float:right;">Developed by Maia Bennett, 2023</p>
 </div>
+
+
+<!-- Relevant PHP to provide functionality with MySQL, printFlow is an external function -->
 
 <?php
 

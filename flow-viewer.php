@@ -7,9 +7,11 @@
 </head>
 <body>
 
+<!-- Citations -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/submit.js"></script>
 
+<!-- Navigation -->
 <ul>
         <li><a href="home.php">Homepage</a></li>
         <li><a href="data-manager.php">Flow data manager</a></li>
@@ -44,6 +46,7 @@
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 function openFormleft() {
 	document.getElementById("addComp").style.display = "block";
@@ -112,6 +115,7 @@ function closeFormleft() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 function openFormleftbottom() {
 	document.getElementById("editComp").style.display = "block";
@@ -431,6 +435,7 @@ function closeFormleftbottom() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 function openFormMarker() {
 	document.getElementById("addMarker").style.display = "block";
@@ -814,6 +819,7 @@ function closeFormPanel() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 function openFormMarkerbottom() {
 	document.getElementById("editMarker").style.display = "block";
@@ -888,6 +894,7 @@ function closeFormPanelbottom() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 function openFormright() {
 	document.getElementById("printPanel").style.display = "block";
@@ -899,6 +906,7 @@ function closeFormright() {
 
 </script>
 
+<!-- Relevant PHP to provide functionality with MySQL, printPanel is an external function -->
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

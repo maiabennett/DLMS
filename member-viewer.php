@@ -7,7 +7,7 @@
 </head>
 <body>
 
-
+<!-- Navigation -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/submit.js"></script>
 
@@ -55,6 +55,7 @@
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 function openFormleft() {
 	document.getElementById("addMember").style.display = "block";
@@ -136,6 +137,7 @@ function closeFormleft() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 function openFormcenter() {
 	document.getElementById("editMember").style.display = "block";
@@ -220,6 +222,7 @@ function closeFormcenter() {
 	</form>
 </div>
 
+<!-- Relevant JavaScript to open and close forms -->
 <script>
 function openFormright() {
 	document.getElementById("printMember").style.display = "block";
@@ -231,7 +234,7 @@ function closeFormright() {
 
 </script>
 
-
+<!-- Relevant PHP to provide functionality with MySQL, printMember is an external function -->
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
